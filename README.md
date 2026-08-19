@@ -81,7 +81,7 @@ Departing from conventional developer portfolios, Nexus Ai fuses the tactile aes
 nexus-ai/
 ├── public/
 │   ├── icon.svg                      # Custom vector terminal favicon
-│   └── Gourav_ML_Eng_Resume.pdf      # Attached downloadable resume artifact
+│   └── resume.pdf                    # Attached downloadable resume artifact
 ├── src/
 │   ├── app/
 │   │   ├── globals.css               # Terminal scrollbars, animations & glass styles
@@ -104,7 +104,7 @@ nexus-ai/
 │   │   ├── Footer.tsx                # Minimal terminal status footer
 │   │   └── InteractiveTerminalModal.tsx # Full-featured floating terminal console
 │   ├── data/
-│   │   └── resume.ts                 # Verified data store
+│   │   └── resume.ts                 # Centralized configuration & data store
 │   └── types/
 │       └── index.ts                  # TypeScript interface contracts
 ├── package.json
@@ -131,8 +131,8 @@ nexus-ai/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/gauravgulia26/antigravity_google.git
-cd antigravity_google
+git clone https://github.com/your-username/nexus_ai.git
+cd nexus_ai
 ```
 
 ### 2. Install Dependencies
@@ -156,26 +156,91 @@ npm run start
 
 ## ⚙️ Customization Guide
 
-All data presented across the interface is centralized inside **`src/data/resume.ts`**:
+All data presented across the interface is centralized inside **`src/data/resume.ts`**. You can easily replace the placeholder structures with your own profile details:
 
+### 1. Update Profile Identity
 ```typescript
-// Example: Adding/Updating a featured project
+export const PERSONAL_INFO = {
+  name: 'Your Full Name',
+  title: 'AI / ML Engineer',
+  roles: ['AI & ML Engineer', 'MLOps Specialist', 'Generative AI Architect'],
+  email: 'your.email@example.com',
+  phone: '+1 234 567 8900',
+  location: 'City, Country',
+  region: 'Metro Area, Region',
+  github: 'https://github.com/your-username',
+  githubHandle: 'your-username',
+  linkedin: 'https://linkedin.com/in/your-username',
+  linkedinHandle: 'your-username',
+  resumeFile: '/resume.pdf',
+  terminalPrompt: 'engineer@nexus-ai:~$',
+  systemStatus: 'ONLINE // OPEN TO OPPORTUNITIES',
+  tagline: 'Designing and deploying production-grade Machine Learning pipelines, Agentic RAG architectures, and low-latency inference systems.',
+  // ...
+};
+```
+
+### 2. Add or Update Featured Projects
+```typescript
 export const PROJECTS: ProjectItem[] = [
   {
-    id: 'burnout-prediction',
-    title: 'End-to-End AI-Powered Burnout Risk Prediction',
-    subtitle: 'Configurable ML Experimentation & Containerized Serving System',
-    category: 'mlops',
-    period: 'Jun 2026 - Aug 2026',
-    status: 'COMPLETED // LIVE REPO & CONTAINER',
-    links: [
-      { label: 'GitHub Repo', url: 'https://github.com/gauravgulia26', type: 'github' },
-      { label: 'Live Streamlit UI', url: 'https://github.com/gauravgulia26', type: 'demo' },
-      { label: 'Docker Container', url: 'https://hub.docker.com', type: 'docker' },
-      { label: 'FastAPI Swagger', url: 'https://github.com/gauravgulia26', type: 'api' },
+    id: 'example-project-id',
+    title: 'Your High-Impact AI/ML System Title',
+    subtitle: 'Production Architecture & Infrastructure Overview',
+    category: 'mlops', // 'genai' | 'mlops' | 'cv' | 'library'
+    period: 'Jan 2026 - Present',
+    problem: 'Description of the core engineering challenge or business requirement...',
+    approach: 'Technical methodology, feature engineering, and model training workflow...',
+    architecture: 'Infrastructure components, serving stack, orchestration, and containerization...',
+    contributions: [
+      'Engineered scalable data preprocessing and validation pipelines.',
+      'Architected automated MLOps orchestration and experiment tracking.',
+      'Deployed low-latency containerized REST APIs with monitoring.',
     ],
-    // ...
-  }
+    technologies: ['Python', 'FastAPI', 'MLflow', 'DVC', 'Docker', 'Airflow'],
+    outcomes: [
+      'Production deployment with automated CI/CD pipelines',
+      'Reproducible artifact management and versioned experiments',
+    ],
+    status: 'PRODUCTION // LIVE SYSTEM',
+    links: [
+      { label: 'GitHub Repo', url: 'https://github.com/your-username/project-repo', type: 'github' },
+      { label: 'Live Demo UI', url: 'https://your-demo-app.com', type: 'demo' },
+      { label: 'Docker Hub', url: 'https://hub.docker.com/r/your-username/image', type: 'docker' },
+      { label: 'API Docs', url: 'https://your-api-endpoint.com/docs', type: 'api' },
+    ],
+    metrics: [
+      { label: 'Deployment', value: 'Docker Container' },
+      { label: 'Tracking', value: 'DVC + MLflow' },
+    ],
+  },
+];
+```
+
+### 3. Add Research Publications & Peer-Reviewed Papers
+```typescript
+export const RESEARCH_PUBLICATIONS: ResearchPublication[] = [
+  {
+    id: 'research-paper-id',
+    title: 'Your Research Paper Title',
+    authors: 'Author Names et al.',
+    venue: 'Conference / Journal / Peer-Reviewed Venue',
+    period: 'Published Research',
+    abstract: 'Abstract summary of the research methodology, experiments, and findings...',
+    methodology: [
+      'Comparative statistical modeling and feature selection techniques.',
+      'Multi-model ensemble architectures with rigorous cross-validation.',
+    ],
+    metrics: [
+      { label: 'EVALUATION', value: 'Precision / Recall / ROC-AUC' },
+      { label: 'FRAMEWORK', value: 'Ensemble Learning' },
+    ],
+    technologies: ['Python', 'Scikit-Learn', 'Statistical Modeling'],
+    highlights: [
+      'Demonstrated high diagnostic sensitivity and generalization.',
+      'Peer-reviewed clinical or technical machine learning contribution.',
+    ],
+  },
 ];
 ```
 
