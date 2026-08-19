@@ -22,8 +22,7 @@
 [STATUS: SYSTEM ONLINE] • [CORE: SKYNET v5.19] • [MODE: PRODUCTION]
 ```
 
-### 🌐 [🚀 Live Command Center Deployment — CLICK HERE TO LAUNCH](https://nexus-ai-portfolio.vercel.app)
-*(Replace with your custom production deployment URL)*
+### 🌐 [🚀 Live Command Center Deployment — CLICK HERE TO LAUNCH](https://gaurxv-ai.vercel.app/)
 
 <br />
 
