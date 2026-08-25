@@ -126,7 +126,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTerminal }) => {
 
               <a
                 href={PERSONAL_INFO.resumeFile}
-                download="Gourav_Gulia_Resume.pdf"
+                download="Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 font-mono text-xs sm:text-sm transition-all flex items-center gap-2 hover:text-white cursor-pointer"

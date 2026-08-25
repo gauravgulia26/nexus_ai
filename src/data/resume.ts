@@ -18,7 +18,7 @@ export const PERSONAL_INFO = {
   githubHandle: 'gauravgulia26',
   linkedin: 'https://linkedin.com/in/gauravgulia26',
   linkedinHandle: 'gauravgulia26',
-  resumeFile: '/Gourav_ML_Eng_Resume.pdf',
+  resumeFile: '/Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf',
   terminalPrompt: 'engineer@nexus-ai:~$',
   systemStatus: 'ONLINE // OPEN TO SPECIALIZED AI/ML ROLES',
   tagline: 'Designing and deploying production-grade Machine Learning pipelines, Agentic RAG architectures, high-scale biometrics, and low-latency inference systems.',

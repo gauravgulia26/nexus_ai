@@ -198,12 +198,12 @@ export const InteractiveTerminalModal: React.FC<InteractiveTerminalModalProps> =
       if (typeof window !== 'undefined') {
         const link = document.createElement('a');
         link.href = PERSONAL_INFO.resumeFile;
-        link.download = 'Gourav_Gulia_Resume.pdf';
+        link.download = 'Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf';
         link.click();
       }
       response = (
         <div className="text-xs text-emerald-400">
-          ✓ Resume download initiated: Gourav_Gulia_Resume.pdf
+          ✓ Resume download initiated: Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf
         </div>
       );
     } else if (lower === 'exit' || lower === 'quit') {

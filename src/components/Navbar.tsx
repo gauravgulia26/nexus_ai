@@ -130,7 +130,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
 
             <a
               href={PERSONAL_INFO.resumeFile}
-              download="Gourav_Gulia_Resume.pdf"
+              download="Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 font-mono text-xs transition-all hover:shadow-[0_0_12px_rgba(0,240,255,0.2)] cursor-pointer"
@@ -202,7 +202,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
               </a>
               <a
                 href={PERSONAL_INFO.resumeFile}
-                download="Gourav_Gulia_Resume.pdf"
+                download="Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf"
                 className="flex items-center justify-center gap-1.5 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-300"
               >
                 <Download className="w-3.5 h-3.5" />
