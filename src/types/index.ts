@@ -21,7 +21,7 @@ export interface EducationItem {
 export interface ProjectLink {
   label: string;
   url: string;
-  type: 'github' | 'demo' | 'docker' | 'api' | 'docs' | 'pypi';
+  type: 'github' | 'demo' | 'docker' | 'api' | 'docs' | 'pypi' | 'paper';
 }
 
 export interface ProjectItem {
@@ -52,6 +52,8 @@ export interface ResearchPublication {
   metrics: { label: string; value: string }[];
   technologies: string[];
   highlights: string[];
+  doi?: string;
+  url?: string;
 }
 
 export interface SkillCategory {

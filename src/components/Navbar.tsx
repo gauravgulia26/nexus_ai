@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Terminal, Download, Menu, X, Activity } from 'lucide-react';
+import { Terminal, Download, Menu, X } from 'lucide-react';
 import { PERSONAL_INFO } from '@/data/resume';
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-3.5 h-3.5' }) => (
@@ -19,12 +19,13 @@ interface NavbarProps {
 }
 
 const NAV_ITEMS = [
-  { id: 'about', label: 'ABOUT', href: '#about' },
-  { id: 'experience', label: 'EXPERIENCE', href: '#experience' },
-  { id: 'projects', label: 'PROJECTS', href: '#projects' },
-  { id: 'research', label: 'RESEARCH', href: '#research' },
-  { id: 'skills', label: 'SKILLS', href: '#skills' },
-  { id: 'contact', label: 'CONTACT', href: '#contact' },
+  { id: 'about', label: 'About', href: '#about' },
+  { id: 'experience', label: 'Experience', href: '#experience' },
+  { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'architecture', label: 'Architecture', href: '#architecture' },
+  { id: 'research', label: 'Research', href: '#research' },
+  { id: 'skills', label: 'Skills', href: '#skills' },
+  { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
@@ -36,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['about', 'experience', 'projects', 'research', 'skills', 'contact'];
+      const sections = ['about', 'experience', 'projects', 'architecture', 'research', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -75,26 +76,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-sm sm:text-base font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors">
-                  Nexus Ai
+                <span className="font-sans text-sm sm:text-base font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+                  Gourav Gulia
                 </span>
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
               <span className="font-mono text-[10px] text-slate-400 tracking-wide hidden sm:inline">
-                Command Center of Gourav Gulia
+                AI/ML Engineer • Nexus AI
               </span>
             </div>
           </a>
 
-          {/* Desktop Navigation Links (Unnumbered & Clean Spacing) */}
-          <nav className="hidden lg:flex items-center gap-1.5 glass-panel px-3.5 py-1.5 rounded-full border border-white/10">
+          {/* Desktop Navigation Links (Clean Human Sans-serif) */}
+          <nav className="hidden lg:flex items-center gap-1 glass-panel px-3 py-1 rounded-full border border-white/10">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <a
                   key={item.id}
                   href={item.href}
-                  className={`px-3 py-1 text-xs font-mono tracking-wider transition-all rounded-full ${
+                  className={`px-3 py-1 text-xs font-medium tracking-normal transition-all rounded-full ${
                     isActive
                       ? 'text-cyan-300 font-semibold bg-cyan-500/15 border border-cyan-500/30 shadow-[0_0_12px_rgba(0,240,255,0.2)]'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
@@ -110,33 +111,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
           <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             <button
               onClick={onOpenTerminal}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-cyan-950/50 border border-cyan-500/30 text-cyan-400 font-mono text-xs transition-all hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(0,240,255,0.25)] cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/90 hover:bg-cyan-950/40 border border-white/15 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 font-mono text-xs transition-all cursor-pointer"
               title="Launch Interactive Terminal (Press ~ or click)"
             >
-              <Terminal className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">CLI_MODE</span>
+              <span className="text-cyan-400 font-bold">&gt;_</span>
+              <span>CLI</span>
             </button>
 
             <a
               href="https://github.com/gauravgulia26"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 font-mono text-xs transition-all hover:text-white hover:border-cyan-500/40 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 text-xs font-medium transition-all hover:text-white hover:border-cyan-500/40 cursor-pointer"
               title="Visit GitHub Profile"
             >
               <GithubIcon className="w-3.5 h-3.5 text-emerald-400" />
-              <span>GITHUB</span>
+              <span>GitHub</span>
             </a>
 
             <a
               href={PERSONAL_INFO.resumeFile}
-              download="Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf"
+              download={PERSONAL_INFO.resumeFileName}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 font-mono text-xs transition-all hover:shadow-[0_0_12px_rgba(0,240,255,0.2)] cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-cyan-300 hover:text-white font-medium text-xs transition-all hover:shadow-[0_0_15px_rgba(0,240,255,0.25)] cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>RESUME</span>
+              <span>Resume</span>
             </a>
           </div>
 
@@ -174,14 +175,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
         {mobileMenuOpen && (
           <div className="lg:hidden mt-3 p-4 glass-panel-elevated rounded-xl border border-white/15 space-y-2">
             <div className="pb-2 border-b border-white/10 text-xs font-mono text-cyan-400">
-              Nexus Ai // Command Center of Gourav Gulia
+              Gourav Gulia // AI/ML Engineer
             </div>
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.id}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2 rounded-lg text-xs font-mono tracking-wider ${
+                className={`block px-3 py-2 rounded-lg text-xs font-medium ${
                   activeSection === item.id
                     ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-semibold'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
@@ -195,18 +196,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
                 href="https://github.com/gauravgulia26"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300"
+                className="flex items-center justify-center gap-1.5 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-slate-300"
               >
                 <GithubIcon className="w-3.5 h-3.5 text-emerald-400" />
-                GITHUB
+                GitHub
               </a>
               <a
                 href={PERSONAL_INFO.resumeFile}
-                download="Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf"
-                className="flex items-center justify-center gap-1.5 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-300"
+                download={PERSONAL_INFO.resumeFileName}
+                className="flex items-center justify-center gap-1.5 py-2 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-xs font-medium text-cyan-300"
               >
                 <Download className="w-3.5 h-3.5" />
-                RESUME
+                Resume
               </a>
             </div>
           </div>

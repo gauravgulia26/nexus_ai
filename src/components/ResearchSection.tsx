@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Award, CheckCircle2, FileText, Activity } from 'lucide-react';
+import { Terminal, Award, CheckCircle2, FileText, Activity, ArrowUpRight } from 'lucide-react';
 import { RESEARCH_PUBLICATIONS } from '@/data/resume';
 import { SectionReveal } from '@/components/SectionReveal';
 
@@ -52,12 +52,26 @@ export const ResearchSection: React.FC = () => {
                 {/* Main Content */}
                 <div className="lg:col-span-8 space-y-6">
                   {/* Metadata Header */}
-                  <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
-                    <span className="px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 font-semibold">
-                      {pub.venue}
-                    </span>
-                    <span className="text-slate-500">|</span>
-                    <span className="text-slate-400">{pub.authors}</span>
+                  <div className="flex flex-wrap items-center justify-between gap-2.5 text-xs font-mono">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <span className="px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 font-semibold">
+                        {pub.venue}
+                      </span>
+                      <span className="text-slate-500">|</span>
+                      <span className="text-slate-400">{pub.authors}</span>
+                    </div>
+
+                    {pub.url && (
+                      <a
+                        href={pub.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 hover:text-white transition-all text-xs"
+                      >
+                        <span>IEEE DOI PAPER</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
                   </div>
 
                   {/* Title */}

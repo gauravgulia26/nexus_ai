@@ -9,7 +9,7 @@ export const PORTFOLIO_CONFIG = {
 export const PERSONAL_INFO = {
   name: 'Gourav Gulia',
   title: 'AI / ML Engineer',
-  roles: ['AI & ML Engineer', 'MLOps Infrastructure Specialist', 'Generative AI & RAG Engineer'],
+  roles: ['AI & ML Engineer', 'MLOps Infrastructure Specialist', 'Generative AI & Multi-Agent Systems Engineer'],
   email: 'gaurxv.gulia@gmail.com',
   phone: '+91 9588313823',
   location: 'Haryana, India (131001)',
@@ -18,12 +18,13 @@ export const PERSONAL_INFO = {
   githubHandle: 'gauravgulia26',
   linkedin: 'https://linkedin.com/in/gauravgulia26',
   linkedinHandle: 'gauravgulia26',
-  resumeFile: '/Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf',
+  resumeFile: '/Gourav_AiML_Resume.pdf',
+  resumeFileName: 'Gourav_AiML_Resume.pdf',
   terminalPrompt: 'engineer@nexus-ai:~$',
   systemStatus: 'ONLINE // OPEN TO SPECIALIZED AI/ML ROLES',
-  tagline: 'Designing and deploying production-grade Machine Learning pipelines, Agentic RAG architectures, high-scale biometrics, and low-latency inference systems.',
+  tagline: 'Designing and deploying production-grade Machine Learning pipelines, Multi-Agent LangGraph architectures, high-scale biometrics, and low-latency inference systems.',
   summary:
-    'Gourav Gulia is a production-focused AI/ML Engineer with expertise in building end-to-end machine learning infrastructure, forensic biometrics, automated MLOps pipelines (Airflow, DVC, MLflow, Docker, FastAPI), and Agentic Generative AI systems (LangGraph, RAG). Proven track record at EY and Netmax optimizing model inference latency, orchestrating vector search across large-scale embeddings, and authoring PyPI-published developer tooling.',
+    'Gourav Gulia is a production-focused AI/ML Engineer with expertise in building autonomous multi-agent research systems (LangGraph, LangSmith, Groq LPU), end-to-end machine learning infrastructure (Airflow, DVC, MLflow, Docker, FastAPI), and forensic biometrics (FaceNet512, RetinaFace). Proven track record optimizing model inference latency, orchestrating vector search across large-scale embeddings, and authoring PyPI-published developer tooling.',
   metrics: [
     { label: 'VECTOR_SEARCH', value: 'HNSW Indexing', desc: 'VectorDB Embeddings' },
     { label: 'INFERENCE_ENGINE', value: 'FastAPI Serving', desc: 'Multiprocessing & Dtype Tuning' },
@@ -107,6 +108,54 @@ export const EDUCATION: EducationItem[] = [
 
 export const PROJECTS: ProjectItem[] = [
   {
+    id: 'aurelius',
+    title: 'Aurelius - Autonomous Multi-Agent Research & LLMOps System',
+    subtitle: '5-Persona LangGraph Workflow & Enterprise LLMOps Observability Framework',
+    category: 'genai',
+    period: 'Jun 2026 - Aug 2026',
+    problem:
+      'Autonomous technical and enterprise research requires decomposing broad inquiries into rigorous multi-perspective investigations, validating cross-source citations, and eliminating LLM hallucination in generated technical reports.',
+    approach:
+      'Architected a stateful multi-agent research workflow using LangGraph and LangChain with 5 specialized personas (Lead, Researcher, Synthesizer, Writer, Reviewer), integrated with LangSmith distributed tracing, Groq LPU latency/token tracking, and automated citation scorecards.',
+    architecture:
+      'Stateful LangGraph multi-agent graph with specialized personas, LangSmith distributed tracing, Groq LPU token/latency tracking, Pydantic v2 validation, resilient search & scraping fallback pipelines, real-time Streamlit reasoning UI, and UV + multi-stage Docker deployment backed by 28 automated tests.',
+    contributions: [
+      'Architected a stateful multi-agent research workflow using LangGraph and LangChain with 5 specialized personas: Lead, Researcher, Synthesizer, Writer, and Reviewer, enabling autonomous query decomposition, cross-source evidence gathering, and self-correcting revision loops for citation-backed technical reports.',
+      'Engineered an enterprise-grade LLMOps observability and evaluation framework with LangSmith distributed tracing, granular token and latency tracking for Groq LPU inference, and automated quality scorecards measuring citation density, factual consistency, and evidence grounding with a strict zero-link hallucination guarantee.',
+      'Built a production-ready Python 3.12 architecture using Pydantic v2 validation, provider-abstracted LLM factories, resilient search and scraping fallback pipelines, and structured state management for reliable multi-agent execution.',
+      'Developed a real-time Streamlit reasoning dashboard and production containerization workflow using multi-stage Docker and UV, backed by a 28-test automated test suite covering core workflow, validation, and reliability components.',
+    ],
+    technologies: [
+      'LangGraph',
+      'LangChain',
+      'LangSmith',
+      'Groq LPU',
+      'Python 3.12',
+      'Pydantic v2',
+      'Streamlit',
+      'Docker',
+      'UV',
+      'Pytest',
+      'RAG',
+    ],
+    outcomes: [
+      'Strict zero-link hallucination guarantee with automated citation scorecards',
+      'Full LangSmith distributed tracing & granular Groq LPU latency/token tracking',
+      '28-test automated test suite covering core workflow, validation, and reliability',
+    ],
+    status: 'PRODUCTION // LIVE AGENTIC SYSTEM',
+    links: [
+      { label: 'GitHub Repo', url: 'https://github.com/gauravgulia26/aurelius', type: 'github' },
+      { label: 'Live Agentic UI', url: 'https://aurelius-ai.streamlit.app/', type: 'demo' },
+    ],
+    metrics: [
+      { label: 'Multi-Agent Graph', value: '5 Personas' },
+      { label: 'Observability', value: 'LangSmith Tracing' },
+      { label: 'Inference', value: 'Groq LPU' },
+      { label: 'Reliability', value: '28-Test Suite' },
+    ],
+  },
+  {
     id: 'burnout-prediction',
     title: 'End-to-End AI-Powered Burnout Risk Prediction',
     subtitle: 'Configurable ML Experimentation & Containerized Serving System',
@@ -140,10 +189,10 @@ export const PROJECTS: ProjectItem[] = [
     ],
     status: 'COMPLETED // LIVE REPO & CONTAINER',
     links: [
-      { label: 'GitHub Repo', url: 'https://github.com/gauravgulia26', type: 'github' },
-      { label: 'Live Streamlit UI', url: 'https://github.com/gauravgulia26', type: 'demo' },
-      { label: 'Docker Container', url: 'https://hub.docker.com', type: 'docker' },
-      { label: 'FastAPI Swagger', url: 'https://github.com/gauravgulia26', type: 'api' },
+      { label: 'GitHub Repo', url: 'https://github.com/gauravgulia26/burnout_classifier', type: 'github' },
+      { label: 'Live Streamlit UI', url: 'https://burnout-compass.streamlit.app/', type: 'demo' },
+      { label: 'Docker Container', url: 'https://hub.docker.com/u/gouravgulia4348', type: 'docker' },
+      { label: 'FastAPI Swagger', url: 'https://burnout-classifier.fastapicloud.dev/docs', type: 'api' },
     ],
     metrics: [
       { label: 'Deployment', value: 'Docker Container' },
@@ -267,6 +316,8 @@ export const RESEARCH_PUBLICATIONS: ResearchPublication[] = [
     authors: 'Gourav Gulia et al.',
     venue: 'Peer-Reviewed Research Publication',
     period: 'Published Research',
+    doi: '10.1109/IC-EETA66496.2025.11548371',
+    url: 'https://doi.org/10.1109/IC-EETA66496.2025.11548371',
     abstract:
       'A data-driven predictive framework engineered for early-stage hepatic pathology diagnosis. Employs a multi-model comparative machine learning ensemble evaluated across varied biochemical markers, statistical indicators, and rigorous validation metrics to achieve robust diagnostic sensitivity.',
     methodology: [
@@ -277,7 +328,7 @@ export const RESEARCH_PUBLICATIONS: ResearchPublication[] = [
     metrics: [
       { label: 'DIAGNOSTIC FRAMEWORK', value: 'Ensemble Learning' },
       { label: 'EVALUATION', value: 'Precision / Recall / ROC-AUC' },
-      { label: 'RESEARCH TYPE', value: 'Peer-Reviewed' },
+      { label: 'RESEARCH TYPE', value: 'IEEE Peer-Reviewed' },
       { label: 'DOMAIN', value: 'Healthcare Analytics' },
     ],
     technologies: [
@@ -316,10 +367,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     code: 'GEN_AI',
     description: 'Agentic workflows, prompt architectures & retrieval systems',
     skills: [
-      { name: 'LangGraph', level: 88, highlight: true },
-      { name: 'RAG Architectures', level: 90, highlight: true },
+      { name: 'LangGraph (Multi-Agent Workflows)', level: 94, highlight: true },
+      { name: 'LangSmith (LLMOps Tracing & Evals)', level: 90, highlight: true },
+      { name: 'RAG Architectures', level: 92, highlight: true },
       { name: 'Prompt Engineering', level: 92 },
-      { name: 'LangChain', level: 86 },
+      { name: 'LangChain & Groq LPU Inference', level: 88 },
       { name: 'Explainable AI Copilots', level: 88 },
     ],
   },

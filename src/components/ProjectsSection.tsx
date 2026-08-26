@@ -12,6 +12,12 @@ import {
   CheckCircle2,
   ArrowUpRight,
   Package,
+  Globe,
+  Bot,
+  Cpu,
+  Search,
+  FileText,
+  CheckCheck,
 } from 'lucide-react';
 import { PROJECTS } from '@/data/resume';
 import { ProjectItem } from '@/types';
@@ -29,40 +35,95 @@ const GithubSmall: React.FC<{ className?: string }> = ({ className = 'w-3.5 h-3.
 );
 
 const CATEGORIES = [
-  { id: 'all', label: 'ALL_SYSTEMS' },
-  { id: 'mlops', label: 'MLOPS_&_PIPELINES' },
-  { id: 'genai', label: 'GENAI_&_RAG' },
-  { id: 'cv', label: 'COMPUTER_VISION' },
-  { id: 'library', label: 'LIBRARIES_&_TOOLS' },
+  { id: 'all', label: 'ALL SYSTEMS' },
+  { id: 'genai', label: 'GENAI & AGENTS' },
+  { id: 'mlops', label: 'MLOPS & SERVING' },
+  { id: 'cv', label: 'COMPUTER VISION' },
+  { id: 'library', label: 'LIBRARIES & TOOLS' },
+];
+
+const AURELIUS_PERSONAS = [
+  {
+    id: 'lead',
+    name: 'Lead Agent',
+    icon: Bot,
+    purpose: 'Query decomposition & plan generation',
+    tools: 'Groq LPU (Llama-3.3-70b), Structured Pydantic v2 plan schema',
+    input: 'User natural language research topic',
+    output: 'Parallelized multi-dimensional investigation plan',
+  },
+  {
+    id: 'researcher',
+    name: 'Researcher',
+    icon: Search,
+    purpose: 'Cross-source evidence gathering & scraping',
+    tools: 'Resilient web scraping fallbacks, domain filtering',
+    input: 'Decomposed sub-queries',
+    output: 'Raw citation extracts with exact source metadata',
+  },
+  {
+    id: 'synthesizer',
+    name: 'Synthesizer',
+    icon: Cpu,
+    purpose: 'Evidence consolidation & contradiction resolution',
+    tools: 'Vector embeddings, cross-source corroboration matrix',
+    input: 'Multi-source raw evidence snippets',
+    output: 'Structured, de-duplicated factual knowledge graph',
+  },
+  {
+    id: 'writer',
+    name: 'Writer',
+    icon: FileText,
+    purpose: 'Technical report compilation with citation markers',
+    tools: 'Markdown engine, dynamic bibliographic indexer',
+    input: 'Corroborated evidence knowledge graph',
+    output: 'Comprehensive draft with inline citation anchors',
+  },
+  {
+    id: 'reviewer',
+    name: 'Reviewer ↺',
+    icon: CheckCheck,
+    purpose: 'Self-correcting evaluation & zero-hallucination loop',
+    tools: 'LangSmith distributed tracing, automated scorecards',
+    input: 'Draft technical report + citation registry',
+    output: 'Final verified report OR feedback loop to Writer',
+  },
 ];
 
 export const ProjectsSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [activePersonaIndex, setActivePersonaIndex] = useState<number>(0);
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (selectedCategory === 'all') return true;
     return p.category === selectedCategory;
   });
 
+  const aureliusProject = PROJECTS.find((p) => p.id === 'aurelius') || PROJECTS[0];
+  const otherProjects = filteredProjects.filter((p) => p.id !== 'aurelius');
+
+  const activePersona = AURELIUS_PERSONAS[activePersonaIndex];
+  const PersonaIcon = activePersona.icon;
+
   return (
     <SectionReveal id="projects" className="py-20 relative scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10"
+          className="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
         >
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 font-mono text-xs text-cyan-400 bg-cyan-950/40 border border-cyan-500/30 px-3 py-1 rounded-md">
               <Terminal className="w-3.5 h-3.5" />
-              <span>03 // FEATURED PROJECTS</span>
+              <span>04 // FEATURED PRODUCTION PROJECTS</span>
             </div>
             <span className="font-mono text-xs text-slate-500 hidden sm:inline">
-              $ projects --production --inspect
+              $ projects --inspect --verified_outcomes
             </span>
           </div>
 
@@ -72,7 +133,7 @@ export const ProjectsSection: React.FC = () => {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-sans whitespace-nowrap transition-all cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-[0_0_15px_rgba(0,240,255,0.15)] font-semibold'
                     : 'bg-white/5 text-slate-400 border border-white/5 hover:text-slate-200 hover:bg-white/10'
@@ -84,58 +145,243 @@ export const ProjectsSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Minimal Projects Grid */}
+        {/* ========================================================================= */}
+        {/* FLAGSHIP SPOTLIGHT: AURELIUS (Autonomous Multi-Agent Research System) */}
+        {/* ========================================================================= */}
+        {(selectedCategory === 'all' || selectedCategory === 'genai') && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-panel-elevated rounded-2xl p-6 sm:p-8 md:p-10 border border-cyan-500/40 relative overflow-hidden shadow-2xl space-y-8"
+          >
+            {/* Top Accent Ribbon */}
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-500 via-indigo-500 to-emerald-400" />
+
+            {/* Header / Project Identity */}
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-white/10">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-[0_0_12px_rgba(0,240,255,0.2)]">
+                    FLAGSHIP SYSTEM // MULTI-AGENT LLMOPS
+                  </span>
+                  <span className="text-xs font-mono text-slate-400">{aureliusProject.period}</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-4xl font-extrabold text-white font-sans tracking-tight">
+                  {aureliusProject.title}
+                </h3>
+                <p className="text-sm sm:text-base text-cyan-200/90 font-mono">
+                  {aureliusProject.subtitle}
+                </p>
+              </div>
+
+              {/* Action Buttons Header */}
+              <div className="flex flex-wrap items-center gap-2.5 shrink-0 pt-2 md:pt-0">
+                <a
+                  href="https://aurelius-ai.streamlit.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-sans text-xs font-bold transition-all flex items-center gap-1.5 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] cursor-pointer"
+                >
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>LIVE AGENTIC UI</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+
+                <a
+                  href="https://github.com/gauravgulia26/aurelius"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 border border-white/15 font-sans text-xs font-semibold transition-all flex items-center gap-1.5 hover:border-cyan-500/40 hover:text-white cursor-pointer"
+                >
+                  <GithubSmall className="w-3.5 h-3.5 text-slate-300" />
+                  <span>GitHub</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                </a>
+
+                <button
+                  onClick={() => setSelectedProject(aureliusProject)}
+                  className="px-3.5 py-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-mono text-xs font-semibold transition-all cursor-pointer"
+                >
+                  INSPECT BLUEPRINT
+                </button>
+              </div>
+            </div>
+
+            {/* Interactive 5-Persona Agent Graph Visualizer */}
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-semibold">
+                  <Workflow className="w-4 h-4" />
+                  <span>INTERACTIVE 5-PERSONA LANGGRAPH ARCHITECTURE (CLICK TO INSPECT):</span>
+                </div>
+                <span className="text-[11px] font-mono text-slate-400">
+                  Autonomous revision &amp; evaluation loop
+                </span>
+              </div>
+
+              {/* Persona Selector Nodes */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
+                {AURELIUS_PERSONAS.map((p, idx) => {
+                  const isSelected = activePersonaIndex === idx;
+                  const Icon = p.icon;
+                  return (
+                    <button
+                      key={p.id}
+                      onClick={() => setActivePersonaIndex(idx)}
+                      className={`p-3 rounded-xl text-left border transition-all cursor-pointer relative overflow-hidden flex flex-col justify-between ${
+                        isSelected
+                          ? 'bg-cyan-950/50 border-cyan-400 text-cyan-200 shadow-[0_0_20px_rgba(0,240,255,0.2)]'
+                          : 'bg-slate-900/60 border-white/10 hover:border-white/20 text-slate-400'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <Icon className={`w-4 h-4 ${isSelected ? 'text-cyan-400' : 'text-slate-500'}`} />
+                        <span className="text-[10px] font-mono text-slate-500">0{idx + 1}</span>
+                      </div>
+                      <div className="mt-2 font-sans font-bold text-xs text-white">
+                        {p.name}
+                      </div>
+                      <div className="text-[10px] text-slate-400 font-sans line-clamp-1 mt-0.5">
+                        {p.purpose}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Persona Deep-Dive Inspector Box */}
+              <div className="p-4 sm:p-5 rounded-xl bg-slate-950/80 border border-cyan-500/30 font-mono text-xs space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-white/10 gap-1">
+                  <div className="flex items-center gap-2">
+                    <PersonaIcon className="w-4 h-4 text-cyan-400" />
+                    <span className="text-white font-bold font-sans text-sm">
+                      {activePersona.name} &mdash; Execution Role
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
+                    ZERO-HALLUCINATION SCORECARD
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans text-xs">
+                  <div>
+                    <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">MISSION / PURPOSE</div>
+                    <div className="text-slate-200 mt-0.5 leading-relaxed">{activePersona.purpose}</div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">TOOLS &amp; INFRASTRUCTURE</div>
+                    <div className="text-cyan-300 font-mono text-[11px] mt-0.5 leading-relaxed">{activePersona.tools}</div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">OUTPUT ARTIFACT</div>
+                    <div className="text-slate-200 mt-0.5 leading-relaxed">{activePersona.output}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Problem -> System -> Tech -> Result Framework */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 font-sans">
+              <div className="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-1.5">
+                <div className="text-xs font-mono text-rose-400 uppercase font-semibold">01 // PROBLEM</div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  {aureliusProject.problem}
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-1.5">
+                <div className="text-xs font-mono text-indigo-400 uppercase font-semibold">02 // SYSTEM</div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  {aureliusProject.architecture}
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-1.5">
+                <div className="text-xs font-mono text-cyan-400 uppercase font-semibold">03 // TECHNOLOGIES</div>
+                <div className="flex flex-wrap gap-1 pt-1">
+                  {aureliusProject.technologies.map((t, idx) => (
+                    <span key={idx} className="px-2 py-0.5 rounded bg-slate-900 border border-white/10 text-cyan-300 text-[10px] font-mono">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-900/60 border border-emerald-500/20 space-y-1.5">
+                <div className="text-xs font-mono text-emerald-400 uppercase font-semibold">04 // OUTCOME &amp; RESULT</div>
+                <ul className="space-y-1.5 text-xs text-slate-300">
+                  {aureliusProject.outcomes?.map((out, idx) => (
+                    <li key={idx} className="flex items-start gap-1.5">
+                      <span className="text-emerald-400 font-mono">✓</span>
+                      <span>{out}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* ========================================================================= */}
+        {/* OTHER PRODUCTION PROJECTS GRID (Problem -> System -> Tech -> Result) */}
+        {/* ========================================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredProjects.map((project, idx) => (
+          {otherProjects.map((project, idx) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 25, filter: 'blur(4px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, margin: '-40px' }}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between border border-white/10 hover:border-cyan-500/40 group relative overflow-hidden transition-all"
+              className="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between border border-white/10 hover:border-cyan-500/40 group relative overflow-hidden transition-all space-y-6"
             >
-              {/* Subtle top indicator bar */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
               <div className="space-y-4">
-                {/* Status & Period Header */}
-                <div className="flex items-center justify-between text-[11px] font-mono">
+                {/* Header Badge */}
+                <div className="flex items-center justify-between text-xs font-mono">
                   <span className="px-2.5 py-0.5 rounded bg-cyan-950/40 text-cyan-300 border border-cyan-500/30 font-medium">
                     {project.status}
                   </span>
                   <span className="text-slate-500">{project.period}</span>
                 </div>
 
-                {/* Title & Subtitle */}
+                {/* Title */}
                 <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors font-sans">
+                  <h4 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors font-sans">
                     {project.title}
-                  </h3>
+                  </h4>
                   <p className="text-xs text-indigo-300 font-mono mt-1">{project.subtitle}</p>
                 </div>
 
-                {/* Metrics Summary Grid */}
-                {project.metrics && (
-                  <div className="grid grid-cols-2 gap-2 pt-1">
-                    {project.metrics.map((metric, mIdx) => (
-                      <div
-                        key={mIdx}
-                        className="p-2.5 rounded-lg bg-slate-900/60 border border-white/5 font-mono text-[11px]"
-                      >
-                        <div className="text-slate-400 text-[10px] uppercase">{metric.label}</div>
-                        <div className="text-cyan-300 font-bold mt-0.5">{metric.value}</div>
-                      </div>
-                    ))}
+                {/* Problem Statement */}
+                <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/5 space-y-1 font-sans text-xs">
+                  <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">PROBLEM &amp; OBJECTIVE:</div>
+                  <p className="text-slate-300 leading-relaxed">{project.problem}</p>
+                </div>
+
+                {/* Key Technical Outcomes */}
+                {project.outcomes && (
+                  <div className="space-y-1.5 font-sans">
+                    <div className="text-[10px] font-mono text-emerald-400 uppercase font-semibold">KEY DELIVERABLES:</div>
+                    <ul className="space-y-1">
+                      {project.outcomes.map((out, oIdx) => (
+                        <li key={oIdx} className="text-xs text-slate-300 flex items-start gap-2">
+                          <span className="text-emerald-400 font-mono">▹</span>
+                          <span>{out}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
 
-                {/* Key Technologies preview */}
+                {/* Tech Chips */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {project.technologies.slice(0, 5).map((tech, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2.5 py-0.5 rounded bg-slate-900/80 border border-white/10 text-slate-300 font-mono text-[11px]"
+                      className="px-2.5 py-0.5 rounded bg-slate-900 border border-white/10 text-slate-300 font-mono text-[11px]"
                     >
                       {tech}
                     </span>
@@ -148,8 +394,8 @@ export const ProjectsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Card Footer: Action Links (for burnout) & Details Trigger */}
-              <div className="pt-6 mt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+              {/* Card Footer: Action Links & Inspect Modal */}
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2 flex-wrap">
                   {project.links?.map((link, lIdx) => (
                     <a
@@ -159,8 +405,10 @@ export const ProjectsSection: React.FC = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/30 text-[11px] font-mono transition-all"
                     >
-                      {link.type === 'github' && <GithubSmall className="w-3 h-3" />}
+                      {link.type === 'github' && <GithubSmall className="w-3 h-3 text-slate-300" />}
                       {link.type === 'docker' && <Package className="w-3 h-3 text-cyan-400" />}
+                      {link.type === 'demo' && <Globe className="w-3 h-3 text-emerald-400" />}
+                      {link.type === 'api' && <Code2 className="w-3 h-3 text-indigo-400" />}
                       <span>{link.label}</span>
                       <ArrowUpRight className="w-3 h-3 opacity-60" />
                     </a>
@@ -169,9 +417,9 @@ export const ProjectsSection: React.FC = () => {
 
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-semibold transition-all hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] cursor-pointer ml-auto"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-semibold transition-all cursor-pointer ml-auto"
                 >
-                  <span>INSPECT DETAILS</span>
+                  <span>INSPECT</span>
                   <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
@@ -298,7 +546,7 @@ export const ProjectsSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Clickable Links Inside Modal (only for burnout) */}
+                  {/* Clickable Links Inside Modal */}
                   {selectedProject.links && selectedProject.links.length > 0 && (
                     <div className="pt-3 border-t border-white/10">
                       <div className="text-xs text-cyan-400 mb-2.5">LIVE ARTIFACTS &amp; REPOSITORIES:</div>
@@ -311,6 +559,10 @@ export const ProjectsSection: React.FC = () => {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-mono transition-all hover:shadow-[0_0_15px_rgba(0,240,255,0.2)]"
                           >
+                            {link.type === 'github' && <GithubSmall className="w-3.5 h-3.5" />}
+                            {link.type === 'docker' && <Package className="w-3.5 h-3.5 text-cyan-400" />}
+                            {link.type === 'demo' && <Globe className="w-3.5 h-3.5 text-emerald-400" />}
+                            {link.type === 'api' && <Code2 className="w-3.5 h-3.5 text-indigo-400" />}
                             <span>{link.label}</span>
                             <ArrowUpRight className="w-3.5 h-3.5" />
                           </a>

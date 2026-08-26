@@ -1,12 +1,28 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
+
+function subscribeToTouch(callback: () => void) {
+  if (typeof window === 'undefined') return () => {};
+  const mediaQuery = window.matchMedia('(pointer: coarse)');
+  mediaQuery.addEventListener('change', callback);
+  return () => mediaQuery.removeEventListener('change', callback);
+}
+
+function getTouchSnapshot() {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(pointer: coarse)').matches;
+}
+
+function getTouchServerSnapshot() {
+  return false;
+}
 
 export const CustomCursor: React.FC = () => {
   const [isPointer, setIsPointer] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
+  const isTouch = useSyncExternalStore(subscribeToTouch, getTouchSnapshot, getTouchServerSnapshot);
 
   // Mouse coords
   const cursorX = useMotionValue(-100);
@@ -17,11 +33,7 @@ export const CustomCursor: React.FC = () => {
   const brushY = useSpring(cursorY, { damping: 25, stiffness: 200 });
 
   useEffect(() => {
-    // Detect touch device
-    if (window.matchMedia('(pointer: coarse)').matches) {
-      setIsTouch(true);
-      return;
-    }
+    if (isTouch) return;
 
     const moveMouse = (e: MouseEvent) => {
       cursorX.set(e.clientX);
@@ -53,7 +65,7 @@ export const CustomCursor: React.FC = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [cursorX, cursorY, isVisible, isTouch]);
 
   if (isTouch) return null;
 

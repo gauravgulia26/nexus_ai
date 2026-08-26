@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Cpu, Sparkles, Workflow, Layers, Database, Code2, ShieldAlert, Check } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 import { SKILL_CATEGORIES } from '@/data/resume';
 import { SectionReveal } from '@/components/SectionReveal';
 

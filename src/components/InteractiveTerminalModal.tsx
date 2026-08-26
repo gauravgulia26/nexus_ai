@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, X, CornerDownLeft, Sparkles, HelpCircle } from 'lucide-react';
+import { Terminal, X, CornerDownLeft } from 'lucide-react';
 import { PERSONAL_INFO, EXPERIENCES, PROJECTS, RESEARCH_PUBLICATIONS, SKILL_CATEGORIES } from '@/data/resume';
 
 interface InteractiveTerminalModalProps {
@@ -198,12 +198,12 @@ export const InteractiveTerminalModal: React.FC<InteractiveTerminalModalProps> =
       if (typeof window !== 'undefined') {
         const link = document.createElement('a');
         link.href = PERSONAL_INFO.resumeFile;
-        link.download = 'Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf';
+        link.download = PERSONAL_INFO.resumeFileName;
         link.click();
       }
       response = (
         <div className="text-xs text-emerald-400">
-          ✓ Resume download initiated: Gourav_Gulia_ML_Engineer_MLOps_GenAI_Resume.pdf
+          ✓ Resume download initiated: {PERSONAL_INFO.resumeFileName}
         </div>
       );
     } else if (lower === 'exit' || lower === 'quit') {

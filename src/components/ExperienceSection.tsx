@@ -2,176 +2,248 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Briefcase, Calendar, MapPin, ChevronRight, CheckCircle2, Award, GraduationCap } from 'lucide-react';
-import { EXPERIENCES, EDUCATION } from '@/data/resume';
+import { Terminal, Calendar, MapPin, GraduationCap } from 'lucide-react';
+import { EDUCATION } from '@/data/resume';
 import { SectionReveal } from '@/components/SectionReveal';
+
+const EXPERIENCES_TIMELINE = [
+  {
+    company: 'EY (Ernst & Young)',
+    role: 'Sr. Analyst · AI Systems & Forensic Analytics',
+    period: 'Jun 2025 – Jun 2026',
+    location: 'Gurugram, India',
+    type: 'Full-time Enterprise',
+    summary:
+      'Engineered enterprise biometric forensics, low-latency inference pipelines, and automated MLOps infrastructure for large-scale government clients (SSC, HSSC, NHA).',
+    metrics: [
+      { label: 'Latency Cut', value: '35% Faster', desc: 'Multiprocessing & Dtype' },
+      { label: 'False Positives', value: '11% Reduction', desc: 'ROC Thresholding' },
+      { label: 'Forensic Matching', value: '25% Speedup', desc: 'Jaro & TF-IDF' },
+      { label: 'Memory Footprint', value: '22% Lower', desc: 'Optimized Arrays' },
+    ],
+    tracks: [
+      {
+        num: '01',
+        title: 'Biometric Verification & Image Quality Forensics',
+        desc: 'Deployed production face verification, image quality (PSNR, SSIM, LBP), and morphing detection pipelines using FaceNet512 & RetinaFace for SSC, HSSC, and NHA across challenging multimodal images.',
+        tech: ['FaceNet512', 'RetinaFace', 'OpenCV', 'PSNR/SSIM/LBP'],
+      },
+      {
+        num: '02',
+        title: 'Low-Latency Inference Optimization',
+        desc: 'Engineered multiprocessing acceleration, hyperparameter tuning, and memory-efficient dtype downcasting, cutting production model inference latency by ~35% and memory utilization by 22%.',
+        tech: ['Multiprocessing', 'Python 3.12', 'NumPy', 'Dtype Tuning'],
+      },
+      {
+        num: '03',
+        title: 'Modular MLOps Orchestration & Serving',
+        desc: 'Re-architected legacy ML solutions into modular API-driven frameworks using FastAPI, Apache Airflow workflow DAGs, and MLflow experiment tracking for scalable reproducibility.',
+        tech: ['FastAPI', 'Apache Airflow', 'MLflow', 'Docker'],
+      },
+      {
+        num: '04',
+        title: 'Text Similarity & Impersonation Detection Engine',
+        desc: 'Built an in-house forensic system using Jaro-Winkler similarity, phonetic matching, and TF-IDF vectorization, improving duplicate identity detection efficiency by ~25%.',
+        tech: ['TF-IDF', 'Jaro-Winkler', 'Phonetic NLP', 'VectorDB'],
+      },
+      {
+        num: '05',
+        title: 'Weighted Ensemble Inference & ROC Calibration',
+        desc: 'Designed weighted ensemble inference optimized through A/B Testing, LCB/UCB strategies, and ROC-based threshold calibration, reducing false positives by nearly 11%.',
+        tech: ['Ensemble Learning', 'ROC Tuning', 'A/B Testing', 'Scikit-Learn'],
+      },
+    ],
+  },
+  {
+    company: 'Netmax',
+    role: 'Jr. Data Scientist',
+    period: 'Oct 2024 – Feb 2025',
+    location: 'Chandigarh, India',
+    type: 'Full-time',
+    summary:
+      'Engineered automated data preprocessing pipelines and integrated experiment tracking and data versioning into ML workflows.',
+    metrics: [
+      { label: 'Data Drift Cut', value: '20% Noise Reduction', desc: 'DVC & MLflow' },
+    ],
+    tracks: [
+      {
+        num: '01',
+        title: 'Automated Preprocessing & Experiment Tracking',
+        desc: 'Built a modular data preprocessing pipeline leveraging MLflow, DVC, and Pandas, reducing data drift and noise by 20% and boosting downstream model accuracy across production workflows.',
+        tech: ['MLflow', 'DVC', 'Pandas', 'Scikit-Learn'],
+      },
+    ],
+  },
+];
 
 export const ExperienceSection: React.FC = () => {
   return (
     <SectionReveal id="experience" className="py-20 relative scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex items-center justify-between mb-12"
+          className="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
         >
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 font-mono text-xs text-cyan-400 bg-cyan-950/40 border border-cyan-500/30 px-3 py-1 rounded-md">
               <Terminal className="w-3.5 h-3.5" />
-              <span>02 // EXPERIENCE</span>
+              <span>02 // EXPERIENCE TIMELINE</span>
             </div>
             <span className="font-mono text-xs text-slate-500 hidden sm:inline">
               $ git log --oneline --graph --author=&quot;Gourav Gulia&quot;
             </span>
           </div>
 
-          <div className="font-mono text-xs text-slate-400 hidden md:flex items-center gap-2">
+          {/* Chronological Span Indicator */}
+          <div className="font-mono text-xs text-slate-300 bg-slate-900/90 border border-white/10 px-3.5 py-1 rounded-full flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            ENGINEERING_TIMELINE
+            <span>2024 &mdash; 2026 // ENGINEERING HISTORY</span>
           </div>
         </motion.div>
 
-        {/* Vertical Engineering Timeline */}
-        <div className="relative border-l border-white/10 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-12">
-          {EXPERIENCES.map((exp, index) => (
+        {/* Timeline Stack */}
+        <div className="space-y-10">
+          {EXPERIENCES_TIMELINE.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -25, filter: 'blur(4px)' }}
-              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="relative group"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="glass-panel-elevated rounded-2xl p-6 sm:p-8 md:p-10 border border-white/10 hover:border-cyan-500/30 transition-all space-y-8 relative overflow-hidden"
             >
-              {/* Timeline Node */}
-              <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-[#07090e] border-2 border-cyan-500 flex items-center justify-center group-hover:scale-110 group-hover:border-cyan-300 transition-transform shadow-[0_0_12px_rgba(0,240,255,0.4)]">
-                <div className="w-2 h-2 rounded-full bg-cyan-400" />
+              {/* Subtle top indicator */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+
+              {/* Role & Company Header */}
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-white/10">
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-sans tracking-tight">
+                      {exp.company}
+                    </h3>
+                    <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/40">
+                      {exp.type}
+                    </span>
+                  </div>
+                  <div className="text-sm sm:text-base font-sans font-semibold text-slate-200">
+                    {exp.role}
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-400 font-sans max-w-3xl leading-relaxed">
+                    {exp.summary}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-400 shrink-0">
+                  <span className="flex items-center gap-1.5 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-white/10 text-cyan-300">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {exp.period}
+                  </span>
+                  <span className="flex items-center gap-1.5 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-white/10 text-slate-300">
+                    <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                    {exp.location}
+                  </span>
+                </div>
               </div>
 
-              {/* Experience Card */}
-              <div className="glass-panel-elevated rounded-2xl p-6 sm:p-8 border border-white/10 group-hover:border-cyan-500/30 transition-all">
-                {/* Role Header */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 pb-4 border-b border-white/10">
-                  <div>
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white font-sans">
-                        {exp.role}
-                      </h3>
-                      <span className="px-2.5 py-0.5 rounded text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
-                        {exp.company}
-                      </span>
-                    </div>
-                    <p className="text-sm text-slate-400 mt-1">{exp.summary}</p>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400">
-                    <span className="flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded border border-white/5">
-                      <Calendar className="w-3.5 h-3.5 text-cyan-400" />
-                      {exp.period}
-                    </span>
-                    <span className="flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded border border-white/5">
-                      <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                      {exp.location}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Impact Metrics Badges */}
-                {exp.metrics && exp.metrics.length > 0 && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-4">
-                    {exp.metrics.map((metric, mIdx) => (
-                      <div
-                        key={mIdx}
-                        className="p-2.5 rounded-lg bg-cyan-950/20 border border-cyan-500/20 flex flex-col font-mono"
-                      >
-                        <span className="text-[10px] text-slate-400 uppercase">
-                          {metric.label}
-                        </span>
-                        <span className="text-sm font-bold text-cyan-300">
-                          {metric.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Responsibilities & Achievements */}
-                <div className="pt-2 space-y-3">
-                  <div className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
-                    <Terminal className="w-3 h-3 text-cyan-400" />
-                    <span>KEY_CONTRIBUTIONS:</span>
-                  </div>
-                  <ul className="space-y-2.5">
-                    {exp.responsibilities.map((resp, rIdx) => (
-                      <li key={rIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                        <span className="text-cyan-400 font-mono text-xs select-none mt-0.5">▹</span>
-                        <span className="leading-relaxed">{resp}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Technologies Used */}
-                <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center gap-1.5">
-                  <span className="text-[11px] font-mono text-slate-500 mr-2">STACK:</span>
-                  {exp.technologies.map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2.5 py-1 rounded bg-slate-900/80 border border-white/10 text-slate-300 font-mono text-[11px]"
+              {/* Defensible Impact Metrics */}
+              {exp.metrics && (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono">
+                  {exp.metrics.map((m, mIdx) => (
+                    <div
+                      key={mIdx}
+                      className="p-3.5 rounded-xl bg-slate-900/90 border border-white/5 space-y-1"
                     >
-                      {tech}
-                    </span>
+                      <div className="text-[10px] text-slate-400 uppercase font-semibold">{m.label}</div>
+                      <div className="text-base font-bold text-cyan-300">{m.value}</div>
+                      <div className="text-[10px] text-slate-500 font-sans">{m.desc}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Engineering Tracks Breakdown */}
+              <div className="space-y-4">
+                <div className="text-xs font-mono text-cyan-400 font-semibold flex items-center gap-2">
+                  <Terminal className="w-3.5 h-3.5" />
+                  <span>PRODUCTION ENGINEERING TRACKS:</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {exp.tracks.map((track, tIdx) => (
+                    <div
+                      key={tIdx}
+                      className="p-4 rounded-xl bg-slate-900/50 border border-white/5 space-y-2 hover:border-cyan-500/20 transition-all font-sans"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-mono font-bold text-cyan-400">
+                          {track.num}
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {track.tech.map((t, idx) => (
+                            <span
+                              key={idx}
+                              className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-950 text-slate-300 border border-white/10"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="text-xs sm:text-sm font-bold text-white">
+                        {track.title}
+                      </div>
+
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        {track.desc}
+                      </p>
+                    </div>
                   ))}
                 </div>
               </div>
             </motion.div>
           ))}
 
-          {/* Education Timeline Node */}
+          {/* Academic Background Timeline Node */}
           <motion.div
-            initial={{ opacity: 0, x: -25, filter: 'blur(4px)' }}
-            whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative group"
+            transition={{ duration: 0.5 }}
+            className="glass-panel-elevated rounded-2xl p-6 sm:p-8 border border-white/10 space-y-6"
           >
-            {/* Timeline Node */}
-            <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-[#07090e] border-2 border-indigo-500 flex items-center justify-center group-hover:scale-110 group-hover:border-indigo-300 transition-transform shadow-[0_0_12px_rgba(99,102,241,0.4)]">
-              <div className="w-2 h-2 rounded-full bg-indigo-400" />
+            <div className="flex items-center gap-2 text-indigo-400 font-mono text-xs font-semibold">
+              <GraduationCap className="w-4 h-4" />
+              <span>ACADEMIC FOUNDATION // DATA SCIENCE &amp; APPLIED COMPUTING</span>
             </div>
 
-            {/* Education Card */}
-            <div className="glass-panel-elevated rounded-2xl p-6 sm:p-8 border border-white/10 group-hover:border-indigo-500/30 transition-all space-y-6">
-              <div className="flex items-center gap-2 text-indigo-400 font-mono text-xs">
-                <GraduationCap className="w-4 h-4" />
-                <span>ACADEMIC_BACKGROUND</span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {EDUCATION.map((edu, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 rounded-xl bg-slate-900/70 border border-white/5 space-y-2"
-                  >
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h4 className="text-base font-bold text-white">{edu.degree}</h4>
-                        <div className="text-xs text-indigo-300 font-medium">{edu.institution}</div>
-                      </div>
-                      <span className="text-[11px] font-mono text-slate-400 bg-white/5 px-2 py-0.5 rounded">
-                        {edu.period}
-                      </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans">
+              {EDUCATION.map((edu, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 rounded-xl bg-slate-900/80 border border-white/5 space-y-2"
+                >
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h4 className="text-base font-bold text-white">{edu.degree}</h4>
+                      <div className="text-xs text-indigo-300 font-medium">{edu.institution}</div>
                     </div>
-                    {edu.details && (
-                      <p className="text-xs text-slate-400 pt-1 leading-relaxed">
-                        {edu.details[0]}
-                      </p>
-                    )}
+                    <span className="text-xs font-mono text-slate-400 bg-white/5 px-2.5 py-1 rounded">
+                      {edu.period}
+                    </span>
                   </div>
-                ))}
-              </div>
+                  {edu.details && (
+                    <p className="text-xs text-slate-400 pt-1 leading-relaxed">
+                      {edu.details[0]}
+                    </p>
+                  )}
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Terminal, ArrowUp, ShieldCheck } from 'lucide-react';
+import { ArrowUp, ShieldCheck } from 'lucide-react';
 import { PERSONAL_INFO } from '@/data/resume';
 
 export const Footer: React.FC = () => {

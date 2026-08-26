@@ -7,8 +7,10 @@ import { ScrollProgressBar } from '@/components/ScrollProgressBar';
 import { TerminalBootLoader } from '@/components/TerminalBootLoader';
 import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
+import { RecruiterProofStrip } from '@/components/RecruiterProofStrip';
 import { AboutSection } from '@/components/AboutSection';
 import { ExperienceSection } from '@/components/ExperienceSection';
+import { SystemArchitectureSection } from '@/components/SystemArchitectureSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
 import { ResearchSection } from '@/components/ResearchSection';
 import { SkillsSection } from '@/components/SkillsSection';
@@ -41,10 +43,10 @@ export default function Home() {
       {/* 2. Interactive Ambient Mouse Light & Terminal Blinking Cursor */}
       <CustomCursor />
 
-      {/* 3. Skynet Boot Loader Sequence */}
+      {/* 3. Terminal Boot Sequence */}
       {!booted && <TerminalBootLoader onComplete={() => setBooted(true)} />}
 
-      {/* 4. Layered Ambient Neural Background System */}
+      {/* 4. Layered Ambient Clean Background System */}
       <BackgroundSystem />
 
       {/* 5. Main Portfolio Layout with Smooth Scroll Interactivity */}
@@ -52,11 +54,13 @@ export default function Home() {
         {/* Sticky Glassmorphic Navigation Bar */}
         <Navbar onOpenTerminal={() => setTerminalOpen(true)} />
 
-        {/* Core Content Stream */}
-        <main className="flex-grow space-y-12 sm:space-y-16">
+        {/* Core Content Stream Optimized for Recruiter & Hiring Manager Conversion */}
+        <main className="flex-grow space-y-4 sm:space-y-6">
           <HeroSection onOpenTerminal={() => setTerminalOpen(true)} />
+          <RecruiterProofStrip />
           <AboutSection />
           <ExperienceSection />
+          <SystemArchitectureSection />
           <ProjectsSection />
           <ResearchSection />
           <SkillsSection />

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Terminal, Layers, Database, ShieldCheck, Sparkles, Workflow, ArrowUpRight } from 'lucide-react';
+import { Cpu, Terminal, ShieldCheck, Sparkles, Workflow, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '@/data/resume';
 import { SectionReveal } from '@/components/SectionReveal';
 
@@ -110,72 +110,85 @@ export const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Col: System Parameters / Specifications */}
+            {/* Right Col: Recruiter Quick Scan Card (10-second scan) */}
             <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="p-5 rounded-xl bg-[#090d16]/90 border border-white/10 font-mono text-xs space-y-3"
+                className="p-6 rounded-2xl bg-[#090d16]/95 border border-cyan-500/30 shadow-xl space-y-4 font-mono text-xs relative overflow-hidden"
               >
-                <div className="flex items-center justify-between text-slate-400 border-b border-white/10 pb-2">
-                  <span className="text-cyan-400 font-semibold flex items-center gap-1.5">
+                {/* Header */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <div className="flex items-center gap-2 text-cyan-400 font-bold tracking-wider text-[11px]">
                     <Terminal className="w-3.5 h-3.5" />
-                    SYS_SPECIFICATION
+                    <span>RECRUITER QUICK SCAN</span>
+                  </div>
+                  <span className="text-[10px] font-sans font-semibold bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded-full">
+                    10s READ
                   </span>
-                  <span className="text-emerald-400">STATUS: NOMINAL</span>
                 </div>
 
-                <div className="space-y-2.5">
-                  <div className="flex justify-between items-center py-1 border-b border-white/5">
-                    <span className="text-slate-500">ENGINEER</span>
-                    <span className="text-white font-semibold">{PERSONAL_INFO.name}</span>
+                {/* Scannable Spec Items */}
+                <div className="space-y-3 font-sans">
+                  <div>
+                    <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">ROLE</div>
+                    <div className="text-white font-bold text-sm">AI / ML Engineer</div>
                   </div>
-                  <div className="flex justify-between items-center py-1 border-b border-white/5">
-                    <span className="text-slate-500">EXPERIENCE_TIER</span>
-                    <span className="text-slate-200 font-medium">Enterprise &amp; Public Sector</span>
+
+                  <div>
+                    <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">SPECIALIZATION</div>
+                    <div className="text-cyan-300 font-semibold text-xs">
+                      Production ML · MLOps · Agentic GenAI · Computer Vision
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center py-1 border-b border-white/5">
-                    <span className="text-slate-500">PRIMARY_ENGINE</span>
-                    <span className="text-cyan-300 font-medium">Python / FastAPI / PyTorch</span>
+
+                  <div>
+                    <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">EXPERIENCE</div>
+                    <div className="text-slate-200 text-xs">
+                      1.5+ Years (Enterprise Forensic AI @ EY, Data Science @ Netmax)
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center py-1 border-b border-white/5">
-                    <span className="text-slate-500">ORCHESTRATION</span>
-                    <span className="text-slate-200 font-medium">Airflow / DVC / MLflow</span>
+
+                  <div>
+                    <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">PRIMARY STACK</div>
+                    <div className="text-slate-300 text-xs font-mono bg-slate-900/80 p-2 rounded-lg border border-white/5 mt-1 leading-relaxed">
+                      Python • LangGraph • MLflow • Airflow • FastAPI • Docker • VectorDB
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center py-1 border-b border-white/5">
-                    <span className="text-slate-500">VECTOR_SEARCH</span>
-                    <span className="text-indigo-300 font-medium">Milvus / FAISS / Weaviate</span>
-                  </div>
-                  <div className="flex justify-between items-center py-1 border-b border-white/5">
-                    <span className="text-slate-500">EDUCATION</span>
-                    <span className="text-slate-200 font-medium">M.Sc. Data Science</span>
-                  </div>
-                  <div className="flex justify-between items-center py-1">
-                    <span className="text-slate-500">BASE_REGION</span>
-                    <span className="text-emerald-300 font-medium">Haryana / NCR, India</span>
+
+                  <div className="grid grid-cols-2 gap-3 pt-1 border-t border-white/10">
+                    <div>
+                      <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">EDUCATION</div>
+                      <div className="text-slate-200 text-xs font-medium">M.Sc. Data Science</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-mono text-slate-400 uppercase font-semibold">LOCATION</div>
+                      <div className="text-slate-200 text-xs font-medium">Delhi-NCR, India</div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Quick links banner */}
+              {/* Quick Resume CTA Banner */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="p-4 rounded-xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-indigo-950/40 border border-cyan-500/20 flex items-center justify-between font-mono text-xs"
+                className="p-4 rounded-xl bg-gradient-to-r from-cyan-950/30 via-slate-900 to-indigo-950/30 border border-cyan-500/20 flex items-center justify-between font-sans text-xs"
               >
                 <div>
-                  <div className="text-cyan-400 font-semibold">EXPLORE ENGINEERING WORK</div>
-                  <div className="text-slate-400 text-[11px]">Featured Projects &amp; Research Publication</div>
+                  <div className="text-white font-semibold">Interested in working together?</div>
+                  <div className="text-slate-400 text-[11px] font-mono">Download CV or explore architecture</div>
                 </div>
                 <a
                   href="#projects"
-                  className="p-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1 font-mono text-xs font-medium transition-all"
                 >
-                  <ArrowUpRight className="w-4 h-4" />
+                  <span>PROJECTS</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </motion.div>
             </div>
