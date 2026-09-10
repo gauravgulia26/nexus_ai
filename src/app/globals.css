@@ -1,169 +1,175 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --background: #05070b;
-    --foreground: #e2e8f0;
+  :root, [data-theme="light"], .light {
+    /* ==========================================================
+       TECHNICAL VELLUM WITH FROSTED GLASS (LIGHT MODE)
+       High-contrast, frosted crystal glass surfaces, cobalt accent
+       ========================================================== */
+    --bg-canvas: #F8F7F4;
+    --bg-subtle: #F0EFEA;
+    
+    /* Glassmorphism System */
+    --glass-surface: rgba(255, 255, 255, 0.72);
+    --glass-surface-subtle: rgba(255, 255, 255, 0.48);
+    --glass-surface-elevated: rgba(255, 255, 255, 0.88);
+    --glass-border: rgba(15, 18, 22, 0.08);
+    --glass-border-highlight: rgba(26, 86, 219, 0.35);
+    --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    --glass-shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+
+    --text-primary: #0F1216;
+    --text-secondary: #3E4552;
+    --text-muted: #6B7382;
+
+    --border-subtle: rgba(15, 18, 22, 0.07);
+    --border-default: rgba(15, 18, 22, 0.12);
+    --border-strong: rgba(15, 18, 22, 0.24);
+    --border-accent: rgba(26, 86, 219, 0.45);
+
+    --accent-primary: #1A56DB;
+    --accent-hover: #1442B0;
+    --accent-tint: rgba(26, 86, 219, 0.08);
+
+    --signal-amber: #D97706;
+    --signal-amber-tint: rgba(217, 119, 6, 0.1);
+    --signal-emerald: #059669;
+    --signal-emerald-tint: rgba(5, 150, 105, 0.1);
+    --signal-cyan: #0284C7;
+    --signal-cyan-tint: rgba(2, 132, 199, 0.1);
+
+    --grid-line: rgba(15, 18, 22, 0.035);
+  }
+
+  .dark, [data-theme="dark"] {
+    /* ==========================================================
+       OBSIDIAN FROSTED CYBERNETICS (DARK MODE)
+       Deep obsidian canvas, frosted translucent glass, radiant cobalt
+       ========================================================== */
+    --bg-canvas: #090A0E;
+    --bg-subtle: #0F1117;
+    
+    /* Glassmorphism System */
+    --glass-surface: rgba(16, 20, 29, 0.58);
+    --glass-surface-subtle: rgba(12, 15, 22, 0.42);
+    --glass-surface-elevated: rgba(23, 28, 41, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.09);
+    --glass-border-highlight: rgba(59, 130, 246, 0.45);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    --glass-shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.72), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+    --text-muted: #64748B;
+
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-default: rgba(255, 255, 255, 0.11);
+    --border-strong: rgba(255, 255, 255, 0.22);
+    --border-accent: rgba(59, 130, 246, 0.5);
+
+    --accent-primary: #3B82F6;
+    --accent-hover: #60A5FA;
+    --accent-tint: rgba(59, 130, 246, 0.12);
+
+    --signal-amber: #F59E0B;
+    --signal-amber-tint: rgba(245, 158, 11, 0.12);
+    --signal-emerald: #10B981;
+    --signal-emerald-tint: rgba(16, 185, 129, 0.12);
+    --signal-cyan: #22D3EE;
+    --signal-cyan-tint: rgba(34, 211, 238, 0.12);
+
+    --grid-line: rgba(255, 255, 255, 0.035);
   }
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 body {
-  background-color: #05070b;
-  color: #e2e8f0;
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  letter-spacing: -0.03em;
 }
 
 .font-mono {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 /* ==========================================================
-   CUSTOM TERMINAL SCROLLBAR (Replaces Standard Browser Scrollbar)
-   ========================================================== */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-
-::-webkit-scrollbar-track {
-  background: #06080e;
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #0e1726 0%, #1e293b 50%, #0e1726 100%);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  border-radius: 4px;
-  box-shadow: inset 0 0 6px rgba(0, 240, 255, 0.2);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #00f0ff 0%, #3b82f6 100%);
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
-  border-color: #00f0ff;
-}
-
-/* Firefox custom scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 240, 255, 0.4) #06080e;
-}
-
-/* ==========================================================
-   ENHANCED GLASSMORPHISM & TRANSPARENCY SYSTEM
+   GLASSMORPHISM CORE UTILITY CLASSES
    ========================================================== */
 .glass-panel {
-  background: rgba(10, 15, 26, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.45);
+  background: var(--glass-surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .glass-panel:hover {
-  border-color: rgba(0, 240, 255, 0.35);
-  box-shadow: 0 16px 40px -10px rgba(0, 240, 255, 0.12);
+  border-color: var(--glass-border-highlight);
+  box-shadow: var(--glass-shadow-lg);
+}
+
+.glass-panel-subtle {
+  background: var(--glass-surface-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
 }
 
 .glass-panel-elevated {
-  background: rgba(13, 19, 33, 0.75);
+  background: var(--glass-surface-elevated);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 20px 50px -10px rgba(0, 0, 0, 0.7),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow-lg);
 }
 
-.glass-card {
-  background: rgba(11, 17, 30, 0.5);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
 }
 
-.glass-card:hover {
-  background: rgba(15, 24, 42, 0.75);
-  border-color: rgba(0, 240, 255, 0.4);
-  box-shadow: 
-    0 16px 36px -10px rgba(0, 240, 255, 0.2),
-    inset 0 1px 1px 0 rgba(0, 240, 255, 0.2);
-  transform: translateY(-3px);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.glass-nav {
-  background: rgba(5, 7, 11, 0.82);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
 }
 
-/* ==========================================================
-   GLOW & AMBIENT ANIMATIONS
-   ========================================================== */
-.glow-cyan {
-  box-shadow: 0 0 30px -5px rgba(0, 240, 255, 0.4);
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
 }
 
-.glow-emerald {
-  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.4);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
 }
 
-.glow-indigo {
-  box-shadow: 0 0 30px -5px rgba(129, 140, 248, 0.4);
-}
-
-/* Grids & Cyber Meshes */
-.terminal-grid {
-  background-size: 48px 48px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-}
-
-.terminal-dots {
-  background-image: radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-@keyframes cursor-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-.animate-blink {
-  animation: cursor-blink 0.9s infinite;
-}
-
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 0.85; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.96); }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 5s ease-in-out infinite;
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(1200%); }
-}
-
-.scanline-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
-  animation: scanline 7s linear infinite;
-  pointer-events: none;
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

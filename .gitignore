@@ -63,3 +63,9 @@ Thumbs.db
 .system_generated/
 *.tmp
 *.bak
+
+# AI & Assistant Configs
+.agent/
+.agents/
+.claude/
+skills-lock.json

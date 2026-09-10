@@ -1,10 +1,17 @@
-import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -15,23 +22,41 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#090A0E" },
+    { media: "(prefers-color-scheme: light)", color: "#F8F7F4" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Nexus Ai",
+  title: "Gourav Gulia — Machine Learning Engineer",
   description:
-    "Production-grade Machine Learning Systems, Biometrics, MLOps Pipelines, and Agentic Generative AI Architectures.",
+    "Engineering portfolio of Gourav Gulia, Machine Learning Engineer specializing in production ML systems, MLOps pipelines, computer vision forensics, and applied AI.",
   keywords: [
-    "Nexus Ai",
-    "AI Engineer",
+    "Gourav Gulia",
+    "Machine Learning Engineer",
     "ML Engineer",
     "MLOps",
-    "Generative AI",
-    "LangGraph",
-    "FastAPI",
-    "Apache Airflow",
-    "MLflow",
     "Computer Vision",
+    "FastAPI",
+    "DVC",
+    "MLflow",
+    "Docker",
+    "Apache Airflow",
     "VectorDB",
+    "LangGraph",
   ],
+  authors: [{ name: "Gourav Gulia" }],
+  openGraph: {
+    title: "Gourav Gulia — Machine Learning Engineer",
+    description:
+      "Production ML systems, MLOps pipelines, biometric computer vision, and applied AI engineering.",
+    type: "website",
+    locale: "en_US",
+  },
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
@@ -45,9 +70,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark scroll-smooth`}>
-      <body className="bg-[#05070b] text-[#e2e8f0] font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-300 min-h-screen overflow-x-hidden">
-        {children}
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${plusJakartaSans.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} scroll-smooth`}
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('portfolio-theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var theme = saved || (prefersDark ? 'dark' : 'light');
+                  var root = document.documentElement;
+                  if (theme === 'dark') {
+                    root.classList.add('dark');
+                    root.classList.remove('light');
+                    root.setAttribute('data-theme', 'dark');
+                    root.style.colorScheme = 'dark';
+                  } else {
+                    root.classList.remove('dark');
+                    root.classList.add('light');
+                    root.setAttribute('data-theme', 'light');
+                    root.style.colorScheme = 'light';
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="bg-[var(--bg-canvas)] text-[var(--text-primary)] font-sans antialiased min-h-screen overflow-x-hidden selection:bg-[var(--accent-tint)] selection:text-[var(--accent-primary)]">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
