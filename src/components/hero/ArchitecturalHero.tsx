@@ -44,20 +44,20 @@ export const ArchitecturalHero: React.FC = () => {
           {/* Left Narrative (7 cols) */}
           <MotionReveal delay={0.1} yOffset={25} className="lg:col-span-7 space-y-6">
             {/* Tag & Name */}
-            <div className="space-y-2">
+            <div className="space-y-2 sm:space-y-3">
               <div className="font-mono text-xs tracking-[0.2em] text-[var(--signal-amber)] uppercase font-semibold">
                 MACHINE LEARNING ENGINEER
               </div>
-              <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[var(--text-primary)] leading-[0.92]">
-                GOURAV <br />
-                <span className="text-[var(--text-muted)] font-bold">GULIA</span>
+              <h1 className="font-serif italic text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[var(--text-primary)] leading-[0.92] font-normal">
+                Gourav <br />
+                <span className="text-[var(--text-muted)] font-light">Gulia</span>
               </h1>
             </div>
 
             {/* Concise Positioning Statement */}
-            <p className="text-base sm:text-xl text-[var(--text-secondary)] max-w-2xl font-normal leading-relaxed">
+            <p className="font-serif text-xl sm:text-2xl text-[var(--text-secondary)] max-w-2xl font-normal leading-relaxed">
               Machine Learning Engineer building{' '}
-              <strong className="text-[var(--text-primary)] font-semibold">
+              <strong className="font-serif italic text-[var(--text-primary)] font-normal">
                 production-grade ML, GenAI, and data systems
               </strong>
               .
@@ -69,7 +69,7 @@ export const ArchitecturalHero: React.FC = () => {
                 (spec, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded-md subtle-tag text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium tracking-tight text-[11px]"
+                    className="px-3 py-1 rounded-md subtle-tag font-serif italic text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-normal tracking-wide text-xs sm:text-[13px]"
                   >
                     {spec}
                   </span>
@@ -145,65 +145,65 @@ export const ArchitecturalHero: React.FC = () => {
           <MotionReveal delay={0.2} yOffset={25} className="lg:col-span-5 glass-panel-elevated rounded-2xl p-5 sm:p-6 space-y-4 shadow-xl border border-[var(--glass-border)]">
             {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)] font-mono text-xs">
-              <div className="font-semibold text-[var(--text-primary)] flex items-center space-x-2">
-                <Briefcase className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
+              <div className="font-serif italic text-base sm:text-lg font-normal text-[var(--text-primary)] flex items-center space-x-2">
+                <Briefcase className="w-4 h-4 text-[var(--accent-primary)]" />
                 <span>Professional Highlights</span>
               </div>
               <span className="embossed-badge px-2 py-0.5 rounded text-[10px] text-[var(--signal-emerald)] font-semibold">EY &bull; PUBLIC SECTOR</span>
             </div>
 
             {/* Highlight Items with Embossed Inset Wells */}
-            <div className="space-y-2.5 font-mono text-xs">
-              <div className="p-3 embossed-inset rounded-xl space-y-1">
-                <div className="flex justify-between text-[var(--text-primary)] font-semibold">
-                  <span>EY (Ernst &amp; Young)</span>
-                  <span className="text-[var(--accent-primary)] font-bold">Sr. Analyst</span>
+            <div className="space-y-2.5 text-xs">
+              <div className="p-3.5 embossed-inset rounded-xl space-y-1">
+                <div className="flex justify-between items-baseline font-serif text-base text-[var(--text-primary)]">
+                  <span className="font-medium">EY (Ernst &amp; Young)</span>
+                  <span className="text-[var(--accent-primary)] font-mono text-xs font-semibold">Sr. Analyst</span>
                 </div>
-                <div className="text-[11px] text-[var(--text-secondary)] font-sans">
+                <div className="text-[12px] sm:text-[13px] text-[var(--text-secondary)] font-serif italic leading-relaxed">
                   Built production face verification and forensic ML pipelines for government clients (SSC, HSSC, NHA).
                 </div>
               </div>
 
-              <div className="p-3 embossed-inset rounded-xl space-y-1">
-                <div className="flex justify-between text-[var(--text-primary)] font-semibold">
-                  <span>Vector Search at Scale</span>
-                  <span className="text-[var(--signal-emerald)] font-bold">1M+ 512D Vectors</span>
+              <div className="p-3.5 embossed-inset rounded-xl space-y-1">
+                <div className="flex justify-between items-baseline font-serif text-base text-[var(--text-primary)]">
+                  <span className="font-medium">Vector Search at Scale</span>
+                  <span className="text-[var(--signal-emerald)] font-mono text-xs font-semibold">1M+ 512D</span>
                 </div>
-                <div className="text-[11px] text-[var(--text-secondary)] font-sans">
+                <div className="text-[12px] sm:text-[13px] text-[var(--text-secondary)] font-serif italic leading-relaxed">
                   Sub-second similarity search using HNSW approximate nearest neighbor indexing in VectorDB.
                 </div>
               </div>
 
-              <div className="p-3 embossed-inset rounded-xl space-y-1">
-                <div className="flex justify-between text-[var(--text-primary)] font-semibold">
-                  <span>MLOps &amp; Serving</span>
-                  <span className="text-[var(--signal-amber)] font-bold">P99 &lt; 45ms</span>
+              <div className="p-3.5 embossed-inset rounded-xl space-y-1">
+                <div className="flex justify-between items-baseline font-serif text-base text-[var(--text-primary)]">
+                  <span className="font-medium">MLOps &amp; Serving</span>
+                  <span className="text-[var(--signal-amber)] font-mono text-xs font-semibold">P99 &lt; 45ms</span>
                 </div>
-                <div className="text-[11px] text-[var(--text-secondary)] font-sans">
+                <div className="text-[12px] sm:text-[13px] text-[var(--text-secondary)] font-serif italic leading-relaxed">
                   FastAPI microservices, multiprocessing batch workers, Airflow orchestration, and DVC data versioning.
                 </div>
               </div>
             </div>
 
             {/* Bottom Proof */}
-            <div className="pt-2 border-t border-[var(--border-subtle)] font-mono text-[10px] text-[var(--text-muted)] flex items-center justify-between">
-              <span className="flex items-center space-x-1.5">
+            <div className="pt-2 border-t border-[var(--border-subtle)] text-[11px] text-[var(--text-muted)] flex items-center justify-between">
+              <span className="flex items-center space-x-1.5 font-mono text-[10px]">
                 <ShieldCheck className="w-3.5 h-3.5 text-[var(--signal-emerald)]" />
                 <span>Reproducible &bull; DVC &amp; MLflow</span>
               </span>
-              <span className="text-[var(--text-primary)] font-semibold">Delhi-NCR, India</span>
+              <span className="text-[var(--text-primary)] font-serif italic text-xs">Delhi-NCR, India</span>
             </div>
           </MotionReveal>
         </div>
 
         {/* Minimal Metrics Strip with Embossed Tactile Surface */}
         <MotionReveal delay={0.25} yOffset={20}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {PERSONAL_DATA.coreMetrics.map((m, i) => (
               <div key={i} className="p-3.5 glass-panel-elevated rounded-xl space-y-1 shadow-sm border border-[var(--glass-border)] hover:border-[var(--accent-primary)]/50 transition-all">
-                <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">{m.label}</div>
-                <div className="text-base sm:text-lg font-bold text-[var(--text-primary)] truncate">{m.value}</div>
-                <div className="text-[11px] text-[var(--text-secondary)] font-sans truncate">{m.detail}</div>
+                <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider">{m.label}</div>
+                <div className="font-serif italic text-2xl sm:text-3xl font-normal text-[var(--text-primary)] truncate">{m.value}</div>
+                <div className="text-xs font-serif italic text-[var(--text-secondary)] truncate">{m.detail}</div>
               </div>
             ))}
           </div>

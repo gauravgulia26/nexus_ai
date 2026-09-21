@@ -77,7 +77,7 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
         >
           <span className="w-2.5 h-2.5 rounded-xs bg-[var(--accent-primary)] group-hover:scale-110 transition-transform shadow-xs" />
           <div className="flex items-center space-x-2">
-            <span className="font-display font-bold tracking-tight text-sm text-[var(--text-primary)]">
+            <span className="font-serif italic font-medium tracking-tight text-sm sm:text-base text-[var(--text-primary)]">
               {PERSONAL_DATA.name}
             </span>
             <span className="hidden sm:inline font-mono text-[10px] text-[var(--text-muted)] tracking-wider">
