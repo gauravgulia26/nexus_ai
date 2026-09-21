@@ -39,7 +39,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Gourav Gulia — Machine Learning Engineer",
+  title: "Gourav.dev",
   description:
     "Engineering portfolio of Gourav Gulia, Machine Learning Engineer specializing in production ML systems, MLOps pipelines, computer vision forensics, and applied AI.",
   keywords: [
@@ -58,16 +58,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Gourav Gulia" }],
   openGraph: {
-    title: "Gourav Gulia — Machine Learning Engineer",
+    title: "Gourav.dev",
     description:
       "Production ML systems, MLOps pipelines, biometric computer vision, and applied AI engineering.",
     type: "website",
     locale: "en_US",
   },
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
     shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 
