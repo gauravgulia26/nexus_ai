@@ -38,7 +38,7 @@ export const SystemTelemetryBar: React.FC = () => {
             })}
           </div>
 
-          <div className="text-[11px] text-[var(--text-muted)] font-serif italic">
+          <div className="text-[10px] text-[var(--text-muted)]">
             Haryana / Delhi-NCR, India
           </div>
         </div>
