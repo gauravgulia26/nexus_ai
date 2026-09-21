@@ -44,13 +44,13 @@ export const ArchitecturalHero: React.FC = () => {
           {/* Left Narrative (7 cols) */}
           <MotionReveal delay={0.1} yOffset={25} className="lg:col-span-7 space-y-6">
             {/* Tag & Name */}
-            <div className="space-y-2">
-              <div className="font-mono text-xs tracking-[0.2em] text-[var(--signal-amber)] uppercase font-semibold">
+            <div className="space-y-4 sm:space-y-5">
+              <div className="font-mono text-xs tracking-[0.2em] text-[var(--signal-amber)] uppercase font-semibold pb-0.5">
                 MACHINE LEARNING ENGINEER
               </div>
-              <h1 className="font-serif italic text-6xl sm:text-8xl lg:text-9xl tracking-tight text-[var(--text-primary)] leading-[0.90] font-bold">
+              <h1 className="font-serif italic text-6xl sm:text-8xl lg:text-9xl tracking-tight text-[var(--text-primary)] leading-[0.92] font-semibold">
                 Gourav <br />
-                <span className="text-[var(--text-muted)] font-semibold">Gulia</span>
+                <span className="text-[var(--text-muted)] font-medium">Gulia</span>
               </h1>
             </div>
 
