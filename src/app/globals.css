@@ -3,82 +3,116 @@
 @layer base {
   :root, [data-theme="light"], .light {
     /* ==========================================================
-       TECHNICAL VELLUM WITH FROSTED GLASS (LIGHT MODE)
-       High-contrast, frosted crystal glass surfaces, cobalt accent
+       TECHNICAL VELLUM WITH STRONG FROSTED GLASS (LIGHT MODE)
+       High-contrast, crystalline frosted glass surfaces, cobalt accent
        ========================================================== */
-    --bg-canvas: #F8F7F4;
-    --bg-subtle: #F0EFEA;
+    --bg-canvas: #F6F5F1;
+    --bg-subtle: #ECEAE3;
     
-    /* Glassmorphism System */
-    --glass-surface: rgba(255, 255, 255, 0.72);
-    --glass-surface-subtle: rgba(255, 255, 255, 0.48);
-    --glass-surface-elevated: rgba(255, 255, 255, 0.88);
-    --glass-border: rgba(15, 18, 22, 0.08);
-    --glass-border-highlight: rgba(26, 86, 219, 0.35);
-    --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-    --glass-shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+    /* Multi-Stop Gradient Glassmorphism System */
+    --glass-gradient-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.68) 45%, rgba(243, 246, 252, 0.76) 100%);
+    --glass-gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(246, 248, 252, 0.52) 100%);
+    --glass-gradient-elevated: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 252, 255, 0.86) 45%, rgba(238, 244, 254, 0.82) 100%);
+    --glass-gradient-accent: linear-gradient(135deg, rgba(235, 243, 255, 0.9) 0%, rgba(245, 248, 255, 0.75) 50%, rgba(230, 240, 255, 0.65) 100%);
+
+    /* Aliases */
+    --glass-surface: var(--glass-gradient-surface);
+    --glass-surface-subtle: var(--glass-gradient-subtle);
+    --glass-surface-elevated: var(--glass-gradient-elevated);
+
+    --glass-border: rgba(15, 18, 22, 0.13);
+    --glass-border-highlight: rgba(26, 86, 219, 0.55);
+    --glass-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(15, 18, 22, 0.12) 50%, rgba(26, 86, 219, 0.35) 100%);
+    --glass-shadow: 0 12px 36px -4px rgba(15, 18, 22, 0.08), 0 4px 12px -2px rgba(15, 18, 22, 0.04), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95);
+    --glass-shadow-lg: 0 24px 54px -6px rgba(15, 18, 22, 0.12), 0 8px 20px -2px rgba(15, 18, 22, 0.06), inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
+
+    /* Subtle Luxury Embossed & Tactile Inset System (Light Mode) */
+    --embossed-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 246, 250, 0.92) 100%);
+    --embossed-shadow: inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0.5px 0 rgba(15, 18, 22, 0.05), 0 2px 4px -1px rgba(15, 18, 22, 0.05);
+    --embossed-shadow-hover: inset 0 1px 0.5px 0 rgba(255, 255, 255, 1), inset 0 -1px 0.5px 0 rgba(15, 18, 22, 0.07), 0 4px 8px -2px rgba(15, 18, 22, 0.07);
+    --embossed-shadow-active: inset 0 1.5px 2.5px 0 rgba(15, 18, 22, 0.1), inset 0 -0.5px 0.5px 0 rgba(255, 255, 255, 0.8), 0 1px 2px 0 rgba(15, 18, 22, 0.03);
+
+    --embossed-inset-bg: rgba(238, 240, 245, 0.55);
+    --embossed-inset-shadow: inset 0 1.5px 3px 0 rgba(15, 18, 22, 0.05), inset 0 -0.5px 0.5px 0 rgba(255, 255, 255, 0.9);
 
     --text-primary: #0F1216;
-    --text-secondary: #3E4552;
-    --text-muted: #6B7382;
+    --text-secondary: #333B48;
+    --text-muted: #647082;
 
-    --border-subtle: rgba(15, 18, 22, 0.07);
-    --border-default: rgba(15, 18, 22, 0.12);
-    --border-strong: rgba(15, 18, 22, 0.24);
-    --border-accent: rgba(26, 86, 219, 0.45);
+    --border-subtle: rgba(15, 18, 22, 0.09);
+    --border-default: rgba(15, 18, 22, 0.16);
+    --border-strong: rgba(15, 18, 22, 0.28);
+    --border-accent: rgba(26, 86, 219, 0.5);
 
     --accent-primary: #1A56DB;
     --accent-hover: #1442B0;
-    --accent-tint: rgba(26, 86, 219, 0.08);
+    --accent-tint: rgba(26, 86, 219, 0.09);
 
     --signal-amber: #D97706;
-    --signal-amber-tint: rgba(217, 119, 6, 0.1);
+    --signal-amber-tint: rgba(217, 119, 6, 0.12);
     --signal-emerald: #059669;
-    --signal-emerald-tint: rgba(5, 150, 105, 0.1);
+    --signal-emerald-tint: rgba(5, 150, 105, 0.12);
     --signal-cyan: #0284C7;
-    --signal-cyan-tint: rgba(2, 132, 199, 0.1);
+    --signal-cyan-tint: rgba(2, 132, 199, 0.12);
 
-    --grid-line: rgba(15, 18, 22, 0.035);
+    --grid-line: rgba(15, 18, 22, 0.04);
   }
 
   .dark, [data-theme="dark"] {
     /* ==========================================================
-       OBSIDIAN FROSTED CYBERNETICS (DARK MODE)
-       Deep obsidian canvas, frosted translucent glass, radiant cobalt
+       OBSIDIAN FROSTED GRADIENT GLASS (DARK MODE)
+       Deep obsidian canvas, luminous frosted translucent glass, radiant accents
        ========================================================== */
-    --bg-canvas: #090A0E;
-    --bg-subtle: #0F1117;
+    --bg-canvas: #08090D;
+    --bg-subtle: #0E1117;
     
-    /* Glassmorphism System */
-    --glass-surface: rgba(16, 20, 29, 0.58);
-    --glass-surface-subtle: rgba(12, 15, 22, 0.42);
-    --glass-surface-elevated: rgba(23, 28, 41, 0.72);
-    --glass-border: rgba(255, 255, 255, 0.09);
-    --glass-border-highlight: rgba(59, 130, 246, 0.45);
-    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.09);
-    --glass-shadow-lg: 0 24px 56px rgba(0, 0, 0, 0.72), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    /* Multi-Stop Gradient Glassmorphism System */
+    --glass-gradient-surface: linear-gradient(135deg, rgba(30, 42, 66, 0.76) 0%, rgba(18, 25, 40, 0.66) 48%, rgba(10, 14, 25, 0.78) 100%);
+    --glass-gradient-subtle: linear-gradient(135deg, rgba(24, 34, 52, 0.58) 0%, rgba(13, 18, 30, 0.48) 100%);
+    --glass-gradient-elevated: linear-gradient(135deg, rgba(38, 52, 82, 0.84) 0%, rgba(22, 31, 50, 0.76) 46%, rgba(12, 17, 30, 0.84) 100%);
+    --glass-gradient-accent: linear-gradient(135deg, rgba(37, 99, 235, 0.22) 0%, rgba(20, 28, 48, 0.75) 50%, rgba(11, 15, 26, 0.82) 100%);
+
+    /* Aliases */
+    --glass-surface: var(--glass-gradient-surface);
+    --glass-surface-subtle: var(--glass-gradient-subtle);
+    --glass-surface-elevated: var(--glass-gradient-elevated);
+
+    --glass-border: rgba(255, 255, 255, 0.16);
+    --glass-border-highlight: rgba(96, 165, 250, 0.65);
+    --glass-border-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(59, 130, 246, 0.45) 100%);
+    --glass-shadow: 0 16px 44px -4px rgba(0, 0, 0, 0.75), 0 6px 16px -2px rgba(0, 0, 0, 0.5), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.26), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.45);
+    --glass-shadow-lg: 0 28px 68px -6px rgba(0, 0, 0, 0.88), 0 12px 28px -2px rgba(0, 0, 0, 0.65), inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.36);
+
+    /* Subtle Luxury Embossed & Tactile Inset System (Dark Mode) */
+    --embossed-bg: linear-gradient(180deg, rgba(34, 46, 70, 0.9) 0%, rgba(20, 26, 40, 0.9) 100%);
+    --embossed-shadow: inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.45), 0 2px 6px -1px rgba(0, 0, 0, 0.5);
+    --embossed-shadow-hover: inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.32), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.55), 0 4px 10px -2px rgba(0, 0, 0, 0.65);
+    --embossed-shadow-active: inset 0 1.5px 3px 0 rgba(0, 0, 0, 0.65), inset 0 -0.5px 0.5px 0 rgba(255, 255, 255, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+
+    --embossed-inset-bg: rgba(11, 15, 24, 0.65);
+    --embossed-inset-shadow: inset 0 1.5px 4px 0 rgba(0, 0, 0, 0.55), inset 0 -0.5px 0.5px 0 rgba(255, 255, 255, 0.06);
 
     --text-primary: #F3F4F6;
-    --text-secondary: #9CA3AF;
-    --text-muted: #64748B;
+    --text-secondary: #A0AAB8;
+    --text-muted: #6B7B92;
 
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-default: rgba(255, 255, 255, 0.11);
-    --border-strong: rgba(255, 255, 255, 0.22);
-    --border-accent: rgba(59, 130, 246, 0.5);
+    --border-subtle: rgba(255, 255, 255, 0.09);
+    --border-default: rgba(255, 255, 255, 0.15);
+    --border-strong: rgba(255, 255, 255, 0.28);
+    --border-accent: rgba(59, 130, 246, 0.55);
 
     --accent-primary: #3B82F6;
     --accent-hover: #60A5FA;
-    --accent-tint: rgba(59, 130, 246, 0.12);
+    --accent-tint: rgba(59, 130, 246, 0.14);
 
     --signal-amber: #F59E0B;
-    --signal-amber-tint: rgba(245, 158, 11, 0.12);
+    --signal-amber-tint: rgba(245, 158, 11, 0.14);
     --signal-emerald: #10B981;
-    --signal-emerald-tint: rgba(16, 185, 129, 0.12);
+    --signal-emerald-tint: rgba(16, 185, 129, 0.14);
     --signal-cyan: #22D3EE;
-    --signal-cyan-tint: rgba(34, 211, 238, 0.12);
+    --signal-cyan-tint: rgba(34, 211, 238, 0.14);
 
-    --grid-line: rgba(255, 255, 255, 0.035);
+    --grid-line: rgba(255, 255, 255, 0.04);
   }
 }
 
@@ -107,13 +141,17 @@ body {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+.font-serif {
+  font-family: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
 /* ==========================================================
-   GLASSMORPHISM CORE UTILITY CLASSES
+   GRADIENT GLASSMORPHISM SURFACES
    ========================================================== */
 .glass-panel {
-  background: var(--glass-surface);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: var(--glass-gradient-surface);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -125,18 +163,117 @@ body {
 }
 
 .glass-panel-subtle {
-  background: var(--glass-surface-subtle);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--glass-gradient-subtle);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .glass-panel-elevated {
-  background: var(--glass-surface-elevated);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: var(--glass-gradient-elevated);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow-lg);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.glass-panel-elevated:hover {
+  border-color: var(--glass-border-highlight);
+}
+
+.glass-panel-accent {
+  background: var(--glass-gradient-accent);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid var(--glass-border-highlight);
+  box-shadow: var(--glass-shadow);
+}
+
+/* ==========================================================
+   SUBTLE LUXURY EMBOSSED & TACTILE ELEMENTS
+   ========================================================== */
+.embossed-badge {
+  background: var(--embossed-bg);
+  box-shadow: var(--embossed-shadow);
+  border: 1px solid var(--glass-border);
+  transition: all 0.2s ease;
+}
+
+.embossed-badge:hover {
+  box-shadow: var(--embossed-shadow-hover);
+  border-color: var(--glass-border-highlight);
+}
+
+.embossed-button {
+  background: var(--embossed-bg);
+  box-shadow: var(--embossed-shadow);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+}
+
+.embossed-button:hover {
+  box-shadow: var(--embossed-shadow-hover);
+  border-color: var(--glass-border-highlight);
+}
+
+.embossed-button:active {
+  transform: translateY(1px);
+  box-shadow: var(--embossed-shadow-active);
+}
+
+.embossed-primary-button {
+  background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
+  box-shadow: inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.4), inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.25), 0 3px 10px -2px rgba(26, 86, 219, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.embossed-primary-button:hover {
+  box-shadow: inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.5), inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.3), 0 5px 14px -2px rgba(26, 86, 219, 0.45);
+}
+
+.embossed-primary-button:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+.embossed-inset {
+  background: var(--embossed-inset-bg);
+  box-shadow: var(--embossed-inset-shadow);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.embossed-inset:hover {
+  border-color: var(--border-default);
+}
+
+/* Clean, Restrained Micro-Pills for Standard Tags */
+.subtle-tag {
+  background: var(--glass-gradient-subtle);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.subtle-tag:hover {
+  border-color: var(--glass-border-highlight);
+  color: var(--text-primary);
+}
+
+/* ==========================================================
+   SCROLL TRANSITION & SECTION DIVIDERS
+   ========================================================== */
+.section-divider-glow {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--glass-border-highlight) 50%, transparent 100%);
+  opacity: 0.4;
 }
 
 /* Accessibility Focus States */

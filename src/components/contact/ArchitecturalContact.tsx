@@ -16,7 +16,11 @@ export const ArchitecturalContact: React.FC = () => {
   };
 
   return (
-    <section id="contact" aria-label="Contact Gateway & Technical Discussion" className="py-12 sm:py-24 border-b border-[var(--border-subtle)]">
+    <section
+      id="contact"
+      aria-label="Contact Gateway"
+      className="py-12 sm:py-20 border-b border-[var(--border-subtle)]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <MotionReveal delay={0.1} yOffset={30}>
           <div className="glass-panel-elevated rounded-3xl p-8 sm:p-12 space-y-8 shadow-2xl">
@@ -27,22 +31,21 @@ export const ArchitecturalContact: React.FC = () => {
                 <span className="font-semibold">{PERSONAL_DATA.systemStatus}</span>
               </div>
               <div className="text-[var(--text-muted)]">
-                LOCATION: {PERSONAL_DATA.location.toUpperCase()}
+                {PERSONAL_DATA.location}
               </div>
             </div>
 
-            {/* Monumental Headline */}
+            {/* Headline & Primary CTA */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8 space-y-3">
-                <div className="font-mono text-xs text-[var(--signal-amber)] uppercase tracking-wider font-semibold">
-                  COMMUNICATION // COLLABORATION
+                <div className="font-mono text-xs text-[var(--signal-amber)] uppercase tracking-[0.2em] font-semibold">
+                  CONTACT
                 </div>
-                <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-tight">
-                  Machine Learning Systems &bull; <br />
-                  Production Engineering
+                <h2 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-primary)] leading-tight">
+                  Get in Touch
                 </h2>
-                <p className="text-sm sm:text-base text-[var(--text-secondary)] max-w-xl leading-relaxed">
-                  Available for specialized roles in Machine Learning Systems, MLOps Infrastructure, and Computer Vision.
+                <p className="text-sm sm:text-base text-[var(--text-secondary)] max-w-xl leading-relaxed font-normal">
+                  Open to specialized Machine Learning Engineer, MLOps, and Generative AI opportunities. Available for discussions.
                 </p>
               </div>
 
@@ -51,23 +54,19 @@ export const ArchitecturalContact: React.FC = () => {
                   href={PERSONAL_DATA.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-[var(--accent-primary)] hover:bg-[var(--accent-hover)] text-white font-medium text-sm transition-colors shadow-lg"
+                  className="embossed-primary-button w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl font-semibold text-sm tracking-wide"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>Resume (PDF)</span>
+                  <span>Download Resume (PDF)</span>
                   <ArrowUpRight className="w-4 h-4 opacity-80" />
                 </a>
-                <span className="font-mono text-[10px] text-[var(--text-muted)]">
-                  VERIFIED 2026 // PRODUCTION RECORD
-                </span>
               </div>
             </div>
 
-            {/* Interactive Channels Strip */}
+            {/* Clean Channels Strip */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-6 border-t border-[var(--border-subtle)] font-mono text-xs">
-              
               {/* Direct Email */}
-              <div className="p-4 glass-panel-subtle rounded-xl space-y-2 flex flex-col justify-between">
+              <div className="p-4 glass-panel rounded-xl space-y-2 flex flex-col justify-between border border-[var(--glass-border)] hover:border-[var(--glass-border-highlight)] transition-all">
                 <div>
                   <div className="text-[10px] text-[var(--text-muted)] uppercase">EMAIL</div>
                   <div className="font-bold text-xs text-[var(--text-primary)] truncate pt-0.5">
@@ -77,40 +76,26 @@ export const ArchitecturalContact: React.FC = () => {
                 <div className="pt-2 flex items-center space-x-2">
                   <button
                     onClick={handleCopyEmail}
-                    className="px-2.5 py-1 rounded-md glass-panel text-[var(--text-primary)] flex items-center space-x-1 hover:border-[var(--accent-primary)] transition-colors"
+                    className="embossed-button px-2.5 py-1 rounded-md text-[var(--text-primary)] flex items-center space-x-1"
                   >
-                    {copied ? <Check className="w-3 h-3 text-[var(--signal-emerald)]" /> : <Copy className="w-3 h-3 text-[var(--text-muted)]" />}
+                    {copied ? (
+                      <Check className="w-3 h-3 text-[var(--signal-emerald)]" />
+                    ) : (
+                      <Copy className="w-3 h-3 text-[var(--text-muted)]" />
+                    )}
                     <span>{copied ? 'COPIED' : 'COPY'}</span>
                   </button>
                   <a
                     href={`mailto:${PERSONAL_DATA.email}`}
-                    className="px-2.5 py-1 rounded-md glass-panel text-[var(--accent-primary)] font-semibold"
+                    className="embossed-button px-2.5 py-1 rounded-md text-[var(--accent-primary)] font-semibold"
                   >
-                    OPEN
-                  </a>
-                </div>
-              </div>
-
-              {/* Telephone */}
-              <div className="p-4 glass-panel-subtle rounded-xl space-y-2 flex flex-col justify-between">
-                <div>
-                  <div className="text-[10px] text-[var(--text-muted)] uppercase">DIRECT PHONE</div>
-                  <div className="font-bold text-xs text-[var(--text-primary)] truncate pt-0.5">
-                    {PERSONAL_DATA.phone}
-                  </div>
-                </div>
-                <div className="pt-2">
-                  <a
-                    href={`tel:${PERSONAL_DATA.phone.replace(/\s+/g, '')}`}
-                    className="inline-block px-2.5 py-1 rounded-md glass-panel text-[var(--text-primary)] hover:border-[var(--accent-primary)]"
-                  >
-                    CALL DIRECT
+                    SEND EMAIL
                   </a>
                 </div>
               </div>
 
               {/* GitHub */}
-              <div className="p-4 glass-panel-subtle rounded-xl space-y-2 flex flex-col justify-between">
+              <div className="p-4 glass-panel rounded-xl space-y-2 flex flex-col justify-between border border-[var(--glass-border)] hover:border-[var(--glass-border-highlight)] transition-all">
                 <div>
                   <div className="text-[10px] text-[var(--text-muted)] uppercase">GITHUB</div>
                   <div className="font-bold text-xs text-[var(--text-primary)] truncate pt-0.5">
@@ -122,16 +107,16 @@ export const ArchitecturalContact: React.FC = () => {
                     href={PERSONAL_DATA.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md glass-panel text-[var(--text-primary)] hover:border-[var(--accent-primary)]"
+                    className="embossed-button inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md text-[var(--text-primary)]"
                   >
                     <GithubIcon className="w-3 h-3" />
-                    <span>VIEW REPOS</span>
+                    <span>VIEW PROFILE</span>
                   </a>
                 </div>
               </div>
 
               {/* LinkedIn */}
-              <div className="p-4 glass-panel-subtle rounded-xl space-y-2 flex flex-col justify-between">
+              <div className="p-4 glass-panel rounded-xl space-y-2 flex flex-col justify-between border border-[var(--glass-border)] hover:border-[var(--glass-border-highlight)] transition-all">
                 <div>
                   <div className="text-[10px] text-[var(--text-muted)] uppercase">LINKEDIN</div>
                   <div className="font-bold text-xs text-[var(--text-primary)] truncate pt-0.5">
@@ -143,10 +128,28 @@ export const ArchitecturalContact: React.FC = () => {
                     href={PERSONAL_DATA.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md glass-panel text-[var(--text-primary)] hover:border-[var(--accent-primary)]"
+                    className="embossed-button inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md text-[var(--text-primary)]"
                   >
                     <LinkedinIcon className="w-3 h-3" />
                     <span>CONNECT</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Telephone */}
+              <div className="p-4 glass-panel rounded-xl space-y-2 flex flex-col justify-between border border-[var(--glass-border)] hover:border-[var(--glass-border-highlight)] transition-all">
+                <div>
+                  <div className="text-[10px] text-[var(--text-muted)] uppercase">PHONE</div>
+                  <div className="font-bold text-xs text-[var(--text-primary)] truncate pt-0.5">
+                    {PERSONAL_DATA.phone}
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <a
+                    href={`tel:${PERSONAL_DATA.phone.replace(/[^0-9+]/g, '')}`}
+                    className="embossed-button inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md text-[var(--accent-primary)] font-semibold"
+                  >
+                    <span>CALL DIRECT</span>
                   </a>
                 </div>
               </div>

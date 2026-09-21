@@ -19,7 +19,7 @@ export const EditorialFooter: React.FC = () => {
               {PERSONAL_DATA.name.toUpperCase()}
             </span>
             <span>{'//'}</span>
-            <span>AI & ML ENGINEERING ARCHITECTURE</span>
+            <span>MACHINE LEARNING ENGINEER</span>
           </div>
 
           <button
@@ -34,26 +34,26 @@ export const EditorialFooter: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-[11px]">
           <div>
-            <div className="text-[var(--text-primary)] font-medium pb-1">SPECIFICATION</div>
-            <div>Built with Next.js 16, React 19 & Tailwind CSS v4. Zero layout templates.</div>
+            <div className="text-[var(--text-primary)] font-medium pb-1">OVERVIEW</div>
+            <div>Production-grade Machine Learning, MLOps pipelines, and Generative AI systems.</div>
           </div>
           <div>
-            <div className="text-[var(--text-primary)] font-medium pb-1">ACCESSIBILITY</div>
-            <div>WCAG AAA contrast calibrated &bull; Prefers-reduced-motion verified.</div>
+            <div className="text-[var(--text-primary)] font-medium pb-1">EXPERIENCE</div>
+            <div>Forensic AI and biometrics at EY for public sector clients. M.Sc. Data Science.</div>
           </div>
           <div>
-            <div className="text-[var(--text-primary)] font-medium pb-1">REPRESENTATION</div>
-            <div>512D Euclidean Metric Space &bull; HNSW Approximate Nearest Neighbors.</div>
+            <div className="text-[var(--text-primary)] font-medium pb-1">HIGHLIGHTS</div>
+            <div>Sub-second HNSW vector retrieval, P99 &lt; 45ms FastAPI serving, versioned DVC pipelines.</div>
           </div>
           <div>
-            <div className="text-[var(--text-primary)] font-medium pb-1">VERIFICATION</div>
-            <div>Deterministic DVC Hashes &bull; MLflow Lineage &bull; PyPI Logpunch.</div>
+            <div className="text-[var(--text-primary)] font-medium pb-1">PUBLICATIONS</div>
+            <div>Open source on GitHub, containerized on Docker Hub, published on PyPI &amp; IEEE Xplore.</div>
           </div>
         </div>
 
         <div className="pt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[var(--border-subtle)] text-[10px]">
-          <div>&copy; {new Date().getFullYear()} Gourav Gulia. All engineering rights reserved.</div>
-          <div>HASH: 0x519B_PROD &bull; KERNEL_LATENCY: OPTIMIZED</div>
+          <div>&copy; {new Date().getFullYear()} Gourav Gulia. All rights reserved.</div>
+          <div>Delhi-NCR, India &bull; Machine Learning Engineer</div>
         </div>
       </div>
     </footer>

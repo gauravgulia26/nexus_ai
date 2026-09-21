@@ -4,16 +4,18 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { PERSONAL_DATA } from '@/data/portfolioData';
 import { Sun, Moon, Terminal, Menu, X, FileText, ArrowUpRight } from 'lucide-react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 interface EditorialNavProps {
   onOpenCommandPalette: () => void;
 }
 
 const NAV_LINKS = [
-  { label: 'Work', href: '#flagships' },
-  { label: 'Systems', href: '#technical-systems' },
-  { label: 'Stack', href: '#capabilities' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Research', href: '#research' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Approach', href: '#principles' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -23,16 +25,23 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    restDelta: 0.001,
+  });
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
 
-      const sections = ['flagships', 'technical-systems', 'capabilities', 'experience', 'contact'];
+      const sections = ['experience', 'projects', 'research', 'skills', 'principles', 'contact'];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 180 && rect.bottom >= 180) {
+          if (rect.top <= 200 && rect.bottom >= 160) {
             setActiveSection(sectionId);
             break;
           }
@@ -41,6 +50,7 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -48,12 +58,18 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
     <header className="sticky top-0 z-40 w-full px-4 sm:px-8 pt-3 pb-2 transition-all duration-300">
       <nav
         aria-label="Main Navigation"
-        className={`max-w-7xl mx-auto rounded-xl transition-all duration-300 px-4 sm:px-6 h-14 flex items-center justify-between ${
+        className={`relative overflow-hidden max-w-7xl mx-auto rounded-xl transition-all duration-300 px-4 sm:px-6 h-14 flex items-center justify-between ${
           isScrolled
-            ? 'glass-panel shadow-lg'
+            ? 'glass-panel shadow-lg border border-[var(--glass-border)]'
             : 'bg-transparent border border-transparent'
         }`}
       >
+        {/* Scroll Progress Bar at Bottom of Navbar */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--accent-primary)] via-[var(--signal-cyan)] to-[var(--signal-emerald)] origin-left pointer-events-none"
+          style={{ scaleX }}
+        />
+
         {/* Brand Identity */}
         <a
           href="#"
@@ -70,7 +86,7 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
           </div>
         </a>
 
-        {/* Center Links (Desktop Glass Capsule) */}
+        {/* Center Links (Desktop Glass Capsule with Fluid Transition) */}
         <div className="hidden md:flex items-center space-x-1 glass-panel-subtle px-2 py-1 rounded-lg">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.substring(1);
@@ -78,12 +94,19 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
               <a
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${
+                className={`relative px-3 py-1 rounded-md text-xs font-medium transition-colors z-10 ${
                   isActive
-                    ? 'bg-[var(--accent-primary)] text-white shadow-xs'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--glass-surface)]'
+                    ? 'text-white font-semibold'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeNavSection"
+                    className="absolute inset-0 rounded-md bg-[var(--accent-primary)] shadow-sm -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
                 {link.label}
               </a>
             );
@@ -96,7 +119,7 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
           <button
             onClick={onOpenCommandPalette}
             aria-label="Open Command Palette (Cmd + K)"
-            className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono glass-panel-subtle text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="embossed-button flex items-center space-x-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           >
             <Terminal className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
             <span className="hidden sm:inline text-[10px] opacity-80">⌘K</span>
@@ -106,7 +129,7 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            className="p-2 rounded-md glass-panel-subtle text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="embossed-button p-2 rounded-md text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           >
             {theme === 'dark' ? (
               <Sun className="w-4 h-4 text-[var(--signal-amber)]" />
@@ -115,12 +138,12 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
             )}
           </button>
 
-          {/* Direct Resume Link */}
+          {/* Direct Resume Link with Embossed Styling */}
           <a
             href={PERSONAL_DATA.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-hover)] transition-colors shadow-xs"
+            className="embossed-primary-button hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Resume</span>
@@ -131,7 +154,7 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
-            className="md:hidden p-2 rounded-md glass-panel-subtle text-[var(--text-primary)]"
+            className="embossed-button md:hidden p-2 rounded-md text-[var(--text-primary)]"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
@@ -159,9 +182,9 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
               className="inline-flex items-center space-x-1.5 text-xs font-medium text-[var(--accent-primary)]"
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>Resume PDF</span>
+              <span>Resume (PDF)</span>
             </a>
-            <span className="font-mono text-[10px] text-[var(--text-muted)]">DELHI-NCR</span>
+            <span className="font-mono text-[10px] text-[var(--text-muted)]">Delhi-NCR</span>
           </div>
         </div>
       )}

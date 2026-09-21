@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { PERSONAL_DATA } from '@/data/portfolioData';
-import { Search, ExternalLink, ArrowRight, Sun, Moon, Copy, Check, FileText, Code2, Layers, Cpu, Compass } from 'lucide-react';
+import { Search, ExternalLink, ArrowRight, Sun, Moon, Copy, Check, FileText, Code2, Layers, Cpu, Compass, BookOpen } from 'lucide-react';
 
 interface CommandPaletteModalProps {
   isOpen: boolean;
@@ -12,7 +12,7 @@ interface CommandPaletteModalProps {
 
 interface CommandItem {
   id: string;
-  category: 'Navigation' | 'Case Studies' | 'Actions' | 'External';
+  category: 'Navigation' | 'Projects' | 'Actions' | 'External';
   title: string;
   detail: string;
   icon: React.ElementType;
@@ -42,68 +42,123 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
 
   const commands: CommandItem[] = [
     {
-      id: 'burnout-ai',
-      category: 'Case Studies',
-      title: 'BurnoutAI: Full-Lifecycle ML Pipeline',
-      detail: 'DVC, MLflow, FastAPI, Scikit-Learn & Docker',
-      icon: Layers,
+      id: 'analytica',
+      category: 'Projects',
+      title: 'Analytica: Multi-Agent AI Data Analysis',
+      detail: 'LangGraph, Sandboxed Python, Pydantic & Streamlit',
+      icon: Code2,
       action: () => {
-        const el = document.getElementById('case-study-burnout');
+        const el = document.getElementById('project-analytica');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       },
     },
     {
-      id: 'inspector-cv',
-      category: 'Case Studies',
-      title: 'Inspector: Biometrics & Vector Search',
-      detail: 'RetinaFace, FaceNet512, HNSW VectorDB & Forensics',
-      icon: Cpu,
+      id: 'burnout-ai',
+      category: 'Projects',
+      title: 'BurnoutAI: End-to-End MLOps Pipeline',
+      detail: 'DVC, MLflow, FastAPI, Scikit-Learn & Docker',
+      icon: Layers,
       action: () => {
-        const el = document.getElementById('case-study-inspector');
+        const el = document.getElementById('project-burnout-prediction');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       },
     },
     {
       id: 'aurelius-ai',
-      category: 'Case Studies',
+      category: 'Projects',
       title: 'Aurelius: Multi-Agent Research System',
       detail: '5-Persona LangGraph DAG & LangSmith Tracing',
       icon: Code2,
       action: () => {
-        const el = document.getElementById('case-study-aurelius');
+        const el = document.getElementById('project-aurelius');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       },
     },
     {
-      id: 'tech-visualizer',
+      id: 'inspector-cv',
+      category: 'Projects',
+      title: 'Inspector: Biometrics & Vector Search',
+      detail: 'RetinaFace, FaceNet512, HNSW VectorDB & Forensics',
+      icon: Cpu,
+      action: () => {
+        const el = document.getElementById('project-inspector-library');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'cip-platform',
+      category: 'Projects',
+      title: 'Candidate Intelligence Platform (CIP)',
+      detail: 'Ensemble Risk Model & LangGraph RAG Copilot at EY',
+      icon: Layers,
+      action: () => {
+        const el = document.getElementById('project-cip-platform');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'logpunch',
+      category: 'Projects',
+      title: 'Logpunch: Logging Library on PyPI',
+      detail: 'pip install logpunch - Published Python Package',
+      icon: Code2,
+      action: () => {
+        const el = document.getElementById('project-logpunch-pypi');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'nav-experience',
       category: 'Navigation',
-      title: 'Technical Systems Lab & Architecture Visualizer',
-      detail: 'Interactive Vector Space, MLOps DAG & Biometric Verification',
+      title: 'Work Experience',
+      detail: 'Ernst & Young (EY), Netmax & Education',
       icon: Compass,
       action: () => {
-        const el = document.getElementById('technical-systems');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      },
-    },
-    {
-      id: 'capabilities',
-      category: 'Navigation',
-      title: 'Capability Matrix & Domain Stacks',
-      detail: 'ML Core, CV, MLOps, Agentic AI & Systems',
-      icon: Layers,
-      action: () => {
-        const el = document.getElementById('capabilities');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      },
-    },
-    {
-      id: 'experience-dossier',
-      category: 'Navigation',
-      title: 'Engineering Experience Dossier',
-      detail: 'Ernst & Young (EY), Netmax & IEEE Publication',
-      icon: Layers,
-      action: () => {
         const el = document.getElementById('experience');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'nav-projects',
+      category: 'Navigation',
+      title: 'Featured Projects',
+      detail: 'Analytica, BurnoutAI, Aurelius, Inspector, CIP, Logpunch',
+      icon: Layers,
+      action: () => {
+        const el = document.getElementById('projects');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'nav-research',
+      category: 'Navigation',
+      title: 'Research Publication',
+      detail: 'IEEE Peer-Reviewed Paper on Ensemble Learning',
+      icon: BookOpen,
+      action: () => {
+        const el = document.getElementById('research');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'nav-skills',
+      category: 'Navigation',
+      title: 'Technical Skills',
+      detail: 'Machine Learning, GenAI, MLOps, Data & Cloud',
+      icon: Layers,
+      action: () => {
+        const el = document.getElementById('skills');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+    },
+    {
+      id: 'nav-principles',
+      category: 'Navigation',
+      title: 'Engineering Principles',
+      detail: 'First-principles math, reproducible MLOps, production SLAs',
+      icon: Compass,
+      action: () => {
+        const el = document.getElementById('principles');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       },
     },
@@ -126,7 +181,7 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     {
       id: 'download-resume',
       category: 'Actions',
-      title: 'Download Technical Resume PDF',
+      title: 'Download Resume (PDF)',
       detail: 'Gourav_AiML_Resume.pdf',
       icon: FileText,
       action: () => {
@@ -136,7 +191,7 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     {
       id: 'github',
       category: 'External',
-      title: 'GitHub Repositories',
+      title: 'GitHub Profile',
       detail: 'github.com/gauravgulia26',
       icon: ExternalLink,
       action: () => {
@@ -198,7 +253,7 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
       onClick={onClose}
     >
       <div
-        className="w-full max-w-xl bg-[var(--bg-surface-elevated)] border border-[var(--border-strong)] rounded-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150"
+        className="w-full max-w-xl bg-[var(--bg-surface-elevated)] border border-[var(--border-strong)] rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
@@ -212,7 +267,7 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
               setQuery(e.target.value);
               setSelectedIndex(0);
             }}
-            placeholder="Type a command or jump to system (e.g. Burnout, Inspector, Resume)..."
+            placeholder="Type a command or search project..."
             className="w-full bg-transparent text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-hidden"
           />
           <span className="ml-2 px-1.5 py-0.5 font-mono text-[10px] text-[var(--text-muted)] border border-[var(--border-subtle)] rounded">
@@ -224,7 +279,7 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
         <div className="max-h-80 overflow-y-auto p-2 divide-y divide-[var(--border-subtle)]">
           {filteredCommands.length === 0 ? (
             <div className="py-8 text-center font-mono text-xs text-[var(--text-muted)]">
-              NO MATCHING COMMANDS FOUND IN REGISTRY
+              NO MATCHING COMMANDS FOUND
             </div>
           ) : (
             filteredCommands.map((cmd, idx) => {
@@ -268,10 +323,10 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
           )}
         </div>
 
-        {/* Palette Footer Microcopy */}
+        {/* Palette Footer */}
         <div className="flex items-center justify-between px-4 py-2 border-t border-[var(--border-subtle)] bg-[var(--bg-subtle)] font-mono text-[10px] text-[var(--text-muted)]">
           <span>NAVIGATION: [↑↓] SELECT &bull; [ENTER] EXECUTE</span>
-          <span>SYS: REGISTRY_INDEXED</span>
+          <span>QUICK ACTIONS</span>
         </div>
       </div>
     </div>

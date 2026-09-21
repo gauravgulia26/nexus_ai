@@ -6,112 +6,94 @@ interface SystemPreloaderProps {
   onComplete: () => void;
 }
 
-const BOOT_LOGS = [
-  'KERNEL: Initializing Nexus AI ML Runtime environment',
-  'SYSTEM: Verifying hardware acceleration & tensor cores',
-  'REGISTRY: Loading DVC data hashes & MLflow artifacts',
-  'VECTORS: Initializing HNSW graph indices (512-dim metric space)',
-  'PIPELINES: Checking FastAPI microservice endpoints & Airflow DAGs',
-  'STATUS: Core telemetry verified. System ready.',
-];
-
 export const SystemPreloader: React.FC<SystemPreloaderProps> = ({ onComplete }) => {
-  const [logIndex, setLogIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    // Fast, purposeful initialization (~750ms total)
-    const interval = setInterval(() => {
-      setLogIndex((prev) => {
-        if (prev < BOOT_LOGS.length - 1) {
-          return prev + 1;
-        }
-        return prev;
-      });
-      setProgress((prev) => Math.min(100, prev + 18));
-    }, 110);
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      onComplete();
+      return;
+    }
 
-    const completeTimer = setTimeout(() => {
+    // Fast, subtle, and fluid progress ramp (~600ms total)
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        // Organic easing ramp
+        const step = prev < 50 ? 18 : prev < 85 ? 14 : 8;
+        return Math.min(100, prev + step);
+      });
+    }, 60);
+
+    const timer = setTimeout(() => {
       setProgress(100);
       setIsFading(true);
       const fadeTimer = setTimeout(() => {
         onComplete();
-      }, 300);
+      }, 350);
       return () => clearTimeout(fadeTimer);
-    }, 750);
+    }, 620);
 
     return () => {
       clearInterval(interval);
-      clearTimeout(completeTimer);
+      clearTimeout(timer);
     };
   }, [onComplete]);
 
   return (
-    <aside
-      aria-label="System Initializing"
-      aria-live="polite"
-      className={`fixed inset-0 z-50 flex flex-col justify-between p-6 sm:p-12 bg-[var(--bg-canvas)] text-[var(--text-primary)] transition-opacity duration-300 ${
+    <div
+      role="status"
+      aria-label="Loading portfolio"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-[var(--bg-canvas)]/90 backdrop-blur-2xl transition-opacity duration-350 ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
-      {/* Top Header */}
-      <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-4 font-mono text-xs text-[var(--text-muted)]">
-        <div className="flex items-center space-x-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-[var(--signal-emerald)] animate-pulse" />
-          <span className="tracking-widest uppercase text-[var(--text-primary)] font-medium">
-            GOURAV GULIA // ML SYSTEMS RUNTIME
-          </span>
-        </div>
-        <div className="hidden sm:block">SYS_ID: GG-ML-PROD // V5.2</div>
-      </div>
-
-      {/* Center Initialization Telemetry */}
-      <div className="max-w-2xl w-full mx-auto my-auto space-y-6">
-        <div className="space-y-2">
-          <div className="font-mono text-xs text-[var(--signal-amber)] tracking-wider">
-            [BOOT_SEQUENCE_INITIALIZED]
+      {/* Centered Minimal Frosted Glass Card */}
+      <div className="w-full max-w-xs mx-4 p-6 rounded-2xl glass-panel-elevated border border-[var(--glass-border)] shadow-xl text-center space-y-4">
+        {/* Minimal Monogram & Status Dot */}
+        <div className="flex justify-center items-center">
+          <div className="relative w-10 h-10 rounded-xl glass-panel-subtle flex items-center justify-center border border-[var(--glass-border)] shadow-xs">
+            <span className="font-display font-extrabold text-sm text-[var(--accent-primary)]">
+              GG
+            </span>
+            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[var(--signal-emerald)] animate-pulse" />
           </div>
-          <h1 className="text-2xl sm:text-4xl font-semibold tracking-tight">
-            Initializing Engineering Architecture
+        </div>
+
+        {/* Identity & Subtitle */}
+        <div className="space-y-0.5">
+          <h1 className="font-display font-bold text-base text-[var(--text-primary)] tracking-tight">
+            Gourav Gulia
           </h1>
-          <p className="text-sm text-[var(--text-secondary)]">
-            Loading mathematical models, biometric vector indexes, and reproducible pipeline DAGs.
+          <p className="font-mono text-[10px] text-[var(--text-muted)] tracking-widest uppercase">
+            Machine Learning Engineer
           </p>
         </div>
 
-        {/* Console Log Lines */}
-        <div className="bg-[var(--bg-surface)] border border-[var(--border-default)] rounded p-4 font-mono text-xs space-y-1.5 shadow-sm">
-          {BOOT_LOGS.slice(0, logIndex + 1).map((log, idx) => (
-            <div key={idx} className="flex items-center space-x-2">
-              <span className="text-[var(--accent-primary)] font-bold">›</span>
-              <span className={idx === logIndex ? 'text-[var(--text-primary)] font-medium' : 'text-[var(--text-muted)]'}>
-                {log}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Progress Metric */}
-        <div className="space-y-2">
-          <div className="flex justify-between font-mono text-xs text-[var(--text-muted)]">
-            <span>PIPELINE_SYNCHRONIZATION</span>
-            <span className="text-[var(--text-primary)] font-semibold">{progress}%</span>
-          </div>
-          <div className="h-1 w-full bg-[var(--border-subtle)] rounded-full overflow-hidden">
+        {/* Subtle Hairline Progress Bar */}
+        <div className="space-y-1.5 pt-1">
+          <div className="h-1 w-full bg-[var(--border-subtle)] rounded-full overflow-hidden embossed-inset relative">
             <div
-              className="h-full bg-[var(--accent-primary)] transition-all duration-150 ease-out"
+              className="h-full bg-gradient-to-r from-[var(--accent-primary)] via-[var(--signal-cyan)] to-[var(--signal-emerald)] rounded-full transition-all duration-100 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
+
+          <div className="flex justify-between items-center font-mono text-[10px] text-[var(--text-muted)] px-0.5">
+            <span className="flex items-center space-x-1.5">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--signal-emerald)]" />
+              <span>{progress === 100 ? 'Ready' : 'Loading'}</span>
+            </span>
+            <span className="font-medium text-[var(--text-primary)]">{progress}%</span>
+          </div>
         </div>
       </div>
-
-      {/* Footer Status */}
-      <div className="flex items-center justify-between border-t border-[var(--border-subtle)] pt-4 font-mono text-xs text-[var(--text-muted)]">
-        <span>MEM: 512D_INDEX_READY</span>
-        <span>LATENCY: ZERO_BLOCKING</span>
-      </div>
-    </aside>
+    </div>
   );
 };
