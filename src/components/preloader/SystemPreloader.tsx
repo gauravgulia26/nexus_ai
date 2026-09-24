@@ -69,7 +69,7 @@ export const SystemPreloader: React.FC<SystemPreloaderProps> = ({ onComplete }) 
         {/* Identity & Subtitle */}
         <div className="space-y-0.5">
           <h1 className="font-display font-bold text-base text-[var(--text-primary)] tracking-tight">
-            Gourav Gulia
+            Gaurav Gulia
           </h1>
           <p className="font-mono text-[10px] text-[var(--text-muted)] tracking-widest uppercase">
             Machine Learning Engineer

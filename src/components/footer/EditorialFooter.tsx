@@ -52,7 +52,7 @@ export const EditorialFooter: React.FC = () => {
         </div>
 
         <div className="pt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[var(--border-subtle)] text-[10px]">
-          <div>&copy; {new Date().getFullYear()} Gourav Gulia. All rights reserved.</div>
+          <div>&copy; {new Date().getFullYear()} Gaurav Gulia. All rights reserved.</div>
           <div>Delhi-NCR, India &bull; Machine Learning Engineer</div>
         </div>
       </div>

@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { SystemPreloader } from '@/components/preloader/SystemPreloader';
 import { NeuralFieldCanvas } from '@/components/background/NeuralFieldCanvas';
 import { EditorialNav } from '@/components/navigation/EditorialNav';
-import { CommandPaletteModal } from '@/components/navigation/CommandPaletteModal';
 import { ArchitecturalHero } from '@/components/hero/ArchitecturalHero';
 import { SystemTelemetryBar } from '@/components/telemetry/SystemTelemetryBar';
 import { EngineeringDossier } from '@/components/experience/EngineeringDossier';
@@ -19,20 +18,6 @@ import { SectionDivider } from '@/components/common/MotionReveal';
 
 export default function Home() {
   const [isBooting, setIsBooting] = useState(true);
-  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
-
-  // Global key listener for Cmd+K / Ctrl+K
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setCommandPaletteOpen((prev) => !prev);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
   return (
     <div className="relative min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] font-sans selection:bg-[var(--accent-tint)] selection:text-[var(--accent-primary)]">
@@ -56,7 +41,7 @@ export default function Home() {
       {/* Main Experience Layout */}
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Navigation */}
-        <EditorialNav onOpenCommandPalette={() => setCommandPaletteOpen(true)} />
+        <EditorialNav />
 
         <main id="main-content" className="flex-grow">
           {/* Section 01: Hero Experience (Immediate Positioning) */}
@@ -99,12 +84,6 @@ export default function Home() {
         {/* Footer */}
         <EditorialFooter />
       </div>
-
-      {/* Command Palette Modal */}
-      <CommandPaletteModal
-        isOpen={commandPaletteOpen}
-        onClose={() => setCommandPaletteOpen(false)}
-      />
     </div>
   );
 }

@@ -1,14 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '@/context/ThemeContext';
 import { PERSONAL_DATA } from '@/data/portfolioData';
-import { Sun, Moon, Terminal, Menu, X, FileText, ArrowUpRight } from 'lucide-react';
+import { Menu, X, FileText, ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-
-interface EditorialNavProps {
-  onOpenCommandPalette: () => void;
-}
 
 const NAV_LINKS = [
   { label: 'Experience', href: '#experience' },
@@ -19,8 +14,7 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette }) => {
-  const { theme, toggleTheme } = useTheme();
+export const EditorialNav: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('');
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -115,35 +109,12 @@ export const EditorialNav: React.FC<EditorialNavProps> = ({ onOpenCommandPalette
 
         {/* Right Action Cluster */}
         <div className="flex items-center space-x-2">
-          {/* Command Palette Trigger */}
-          <button
-            onClick={onOpenCommandPalette}
-            aria-label="Open Command Palette (Cmd + K)"
-            className="embossed-button flex items-center space-x-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-          >
-            <Terminal className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
-            <span className="hidden sm:inline text-[10px] opacity-80">⌘K</span>
-          </button>
-
-          {/* Theme Switcher */}
-          <button
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            className="embossed-button p-2 rounded-md text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-          >
-            {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-[var(--signal-amber)]" />
-            ) : (
-              <Moon className="w-4 h-4 text-[var(--accent-primary)]" />
-            )}
-          </button>
-
           {/* Direct Resume Link with Embossed Styling */}
           <a
             href={PERSONAL_DATA.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="embossed-primary-button hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium"
+            className="embossed-primary-button inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-medium"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Resume</span>

@@ -74,7 +74,7 @@ export interface PrincipleRecord {
 }
 
 export const PERSONAL_DATA = {
-  name: 'Gourav Gulia',
+  name: 'Gaurav Gulia',
   title: 'Machine Learning Engineer',
   positioning: 'Machine Learning Engineer building production-grade ML, GenAI, and data systems.',
   specializations: [
@@ -90,7 +90,7 @@ export const PERSONAL_DATA = {
   email: 'gaurxv.gulia@gmail.com',
   github: 'https://github.com/gauravgulia26',
   linkedin: 'https://www.linkedin.com/in/gauravgulia1205/',
-  resumeUrl: '/webpage_resume.pdf',
+  resumeUrl: '/Gaurav_AI_ML_2_YOE.pdf',
   systemStatus: 'Available for ML / AI Roles',
   coreMetrics: [
     { label: 'ROLE', value: 'Sr. Analyst', detail: 'Enterprise AI & Machine Learning at EY' },
@@ -259,7 +259,7 @@ export const ALL_PROJECTS: ProjectData[] = [
 
 export const RESEARCH_WORK: ResearchRecord = {
   title: 'Liver Disease Prediction Using Ensemble Learning',
-  authors: 'Gourav Gulia et al.',
+  authors: 'Gaurav Gulia et al.',
   venue: 'IEEE Peer-Reviewed International Conference Publication',
   doi: '10.1109/IC-EETA66496.2025.11548371',
   url: 'https://doi.org/10.1109/IC-EETA66496.2025.11548371',

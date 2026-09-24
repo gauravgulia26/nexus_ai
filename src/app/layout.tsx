@@ -39,11 +39,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "gourav.dev",
+  title: "Gaurav Gulia",
   description:
-    "Engineering portfolio of Gourav Gulia, Machine Learning Engineer specializing in production ML systems, MLOps pipelines, computer vision forensics, and applied AI.",
+    "Engineering portfolio of Gaurav Gulia, Machine Learning Engineer specializing in production ML systems, MLOps pipelines, computer vision forensics, and applied AI.",
   keywords: [
-    "Gourav Gulia",
+    "Gaurav Gulia",
     "Machine Learning Engineer",
     "ML Engineer",
     "MLOps",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     "VectorDB",
     "LangGraph",
   ],
-  authors: [{ name: "Gourav Gulia" }],
+  authors: [{ name: "Gaurav Gulia" }],
   openGraph: {
-    title: "gourav.dev",
+    title: "Gaurav Gulia",
     description:
       "Production ML systems, MLOps pipelines, biometric computer vision, and applied AI engineering.",
     type: "website",

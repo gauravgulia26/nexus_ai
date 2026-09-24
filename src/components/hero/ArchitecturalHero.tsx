@@ -49,7 +49,7 @@ export const ArchitecturalHero: React.FC = () => {
                 MACHINE LEARNING ENGINEER
               </div>
               <h1 className="font-serif italic text-6xl sm:text-8xl lg:text-9xl tracking-tight text-[var(--text-primary)] leading-[0.92] font-semibold">
-                Gourav <br />
+                Gaurav <br />
                 <span className="text-[var(--text-muted)] font-medium">Gulia</span>
               </h1>
             </div>

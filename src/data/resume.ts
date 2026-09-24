@@ -7,7 +7,7 @@ export const PORTFOLIO_CONFIG = {
 };
 
 export const PERSONAL_INFO = {
-  name: 'Gourav Gulia',
+  name: 'Gaurav Gulia',
   title: 'Machine Learning Engineer',
   roles: ['Machine Learning Engineer', 'MLOps Infrastructure Specialist', 'Generative AI & Agentic Systems Engineer'],
   email: 'gaurxv.gulia@gmail.com',
@@ -17,8 +17,8 @@ export const PERSONAL_INFO = {
   githubHandle: 'gauravgulia26',
   linkedin: 'https://www.linkedin.com/in/gauravgulia1205/',
   linkedinHandle: 'gauravgulia1205',
-  resumeFile: '/webpage_resume.pdf',
-  resumeFileName: 'webpage_resume.pdf',
+  resumeFile: '/Gaurav_AI_ML_2_YOE.pdf',
+  resumeFileName: 'Gaurav_AI_ML_2_YOE.pdf',
   terminalPrompt: 'engineer@nexus-ai:~$',
   systemStatus: 'ONLINE // OPEN TO SPECIALIZED AI/ML ROLES',
   tagline: 'Machine Learning Engineer building production-grade ML, GenAI, and data systems.',
@@ -221,7 +221,7 @@ export const RESEARCH_PUBLICATIONS: ResearchPublication[] = [
   {
     id: 'liver-disease-research',
     title: 'Liver Disease Prediction Using Ensemble Learning',
-    authors: 'Gourav Gulia et al.',
+    authors: 'Gaurav Gulia et al.',
     venue: 'IEEE Peer-Reviewed International Conference Publication',
     period: 'Published Research',
     doi: '10.1109/IC-EETA66496.2025.11548371',
