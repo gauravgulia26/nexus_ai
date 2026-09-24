@@ -64,7 +64,7 @@ export const ArchitecturalContact: React.FC = () => {
             </div>
 
             {/* Clean Channels Strip */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-6 border-t border-[var(--border-subtle)] font-mono text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-6 border-t border-[var(--border-subtle)] font-mono text-xs">
               {/* Direct Email */}
               <div className="p-4 glass-panel rounded-xl space-y-2 flex flex-col justify-between border border-[var(--glass-border)] hover:border-[var(--glass-border-highlight)] transition-all">
                 <div>
@@ -132,24 +132,6 @@ export const ArchitecturalContact: React.FC = () => {
                   >
                     <LinkedinIcon className="w-3 h-3" />
                     <span>CONNECT</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Telephone */}
-              <div className="p-4 glass-panel rounded-xl space-y-2 flex flex-col justify-between border border-[var(--glass-border)] hover:border-[var(--glass-border-highlight)] transition-all">
-                <div>
-                  <div className="text-[10px] text-[var(--text-muted)] uppercase">PHONE</div>
-                  <div className="font-bold text-xs text-[var(--text-primary)] truncate pt-0.5">
-                    {PERSONAL_DATA.phone}
-                  </div>
-                </div>
-                <div className="pt-2">
-                  <a
-                    href={`tel:${PERSONAL_DATA.phone.replace(/[^0-9+]/g, '')}`}
-                    className="embossed-button inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md text-[var(--accent-primary)] font-semibold"
-                  >
-                    <span>CALL DIRECT</span>
                   </a>
                 </div>
               </div>

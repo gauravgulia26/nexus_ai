@@ -88,16 +88,15 @@ export const PERSONAL_DATA = {
     'Machine Learning Engineer with hands-on experience building and deploying production ML systems at Ernst & Young (EY). Specializing in MLOps pipelines, high-dimensional vector search, and multi-agent GenAI architectures. Backed by a strong mathematical and statistical foundation (M.Sc. Data Science) with a focus on low-latency inference, reproducible pipelines, and clean software design.',
   location: 'Haryana / Delhi-NCR, India',
   email: 'gaurxv.gulia@gmail.com',
-  phone: '+91 9588313823',
   github: 'https://github.com/gauravgulia26',
   linkedin: 'https://www.linkedin.com/in/gauravgulia1205/',
   resumeUrl: '/webpage_resume.pdf',
   systemStatus: 'Available for ML / AI Roles',
   coreMetrics: [
-    { label: 'EXPERIENCE', value: 'EY (Ernst & Young)', detail: 'Sr. Analyst in Enterprise Forensic AI & Biometrics' },
-    { label: 'VECTOR SEARCH', value: 'HNSW Indexing', detail: 'Sub-second search across 1M+ 512D embeddings' },
-    { label: 'SERVING LATENCY', value: 'P99 < 45ms', detail: 'FastAPI microservices & Docker deployments' },
-    { label: 'REPRODUCIBILITY', value: 'DVC & MLflow', detail: 'Versioned data pipelines and experiment tracking' },
+    { label: 'ROLE', value: 'Sr. Analyst', detail: 'Enterprise AI & Machine Learning at EY' },
+    { label: 'SCALE', value: '1M+ Records', detail: 'Fast similarity matching across large databases' },
+    { label: 'SYSTEMS', value: 'Production APIs', detail: 'Low-latency services and automated workflows' },
+    { label: 'PRACTICE', value: 'Tested & Versioned', detail: 'End-to-end reproducible data pipelines' },
   ],
 };
 
@@ -139,13 +138,13 @@ export const ALL_PROJECTS: ProjectData[] = [
       'End-to-end machine learning system translating student behavioral and academic data into calibrated burnout risk scores, with complete artifact versioning and containerized serving.',
     engineeringHighlights: [
       'Built an artifact-driven pipeline using DVC and MLflow for deterministic version control from raw data to model weights.',
-      'Developed a high-throughput FastAPI REST service (P99 < 45ms) packaged in a public Docker container with an interactive Streamlit UI.',
+      'Developed a high-throughput REST service packaged in a public Docker container with an interactive Streamlit UI.',
     ],
     technologies: ['Python', 'Scikit-Learn', 'XGBoost', 'DVC', 'MLflow', 'FastAPI', 'Docker', 'Streamlit'],
     metrics: [
       { label: 'Deployment', value: 'Docker Hub Public Image' },
-      { label: 'Tracking', value: 'DVC & MLflow' },
-      { label: 'API Latency', value: 'P99 < 45ms' },
+      { label: 'Tracking', value: 'Experiment Lineage' },
+      { label: 'API Serving', value: 'Low-Latency REST' },
       { label: 'Reproducibility', value: 'Deterministic Hashes' },
     ],
     links: [
@@ -183,24 +182,24 @@ export const ALL_PROJECTS: ProjectData[] = [
   },
   {
     id: 'inspector-library',
-    title: 'Inspector: Biometric Verification & Vector Search Engine',
-    tagline: 'Sub-second similarity retrieval across 512D embeddings and impersonation detection at EY',
+    title: 'Inspector: Biometric Verification & Similarity Search',
+    tagline: 'Fast similarity retrieval and impersonation detection at EY',
     category: 'Computer Vision & Biometrics',
     badge: 'Computer Vision',
     period: 'Jul 2025 – Aug 2025',
-    status: 'EY Internal .whl',
+    status: 'EY Internal Package',
     summary:
-      'In-house high-throughput biometric verification library and vector search engine engineered at Ernst & Young (EY) to audit large-scale government examination datasets (SSC, HSSC, NHA).',
+      'In-house high-throughput biometric verification library and similarity search engine engineered at Ernst & Young (EY) to audit large-scale government examination datasets (SSC, HSSC, NHA).',
     engineeringHighlights: [
-      'Built sub-second similarity search across 1M+ 512D facial embeddings using HNSW graph indexing in VectorDB (Milvus/FAISS).',
-      'Implemented pre-neural image quality gates (PSNR/SSIM/LBP) and phonetic matching (Jaro-Winkler/TF-IDF) reducing false positives by ~11%.',
+      'Built fast similarity search across 1M+ candidate records to detect duplicate identities across nationwide exam candidates.',
+      'Implemented automated image quality filters and text matching algorithms, reducing false positive detections by ~11%.',
     ],
-    technologies: ['FaceNet512', 'RetinaFace', 'VectorDB (Milvus/FAISS)', 'HNSW', 'OpenCV', 'Python Packaging (.whl)', 'Multiprocessing'],
+    technologies: ['Computer Vision', 'Deep Learning', 'Vector Databases', 'Similarity Search', 'Python Packaging', 'Multiprocessing'],
     metrics: [
+      { label: 'Database Scale', value: '1M+ Candidate Records' },
       { label: 'Search Speed', value: 'Sub-Second Retrieval' },
-      { label: 'Embedding Space', value: '512D Deep Vectors' },
-      { label: 'Vector Index', value: 'HNSW Graph (Milvus)' },
-      { label: 'Packaging', value: 'Enterprise .whl Package' },
+      { label: 'Accuracy Gain', value: '+25% Identity Detection' },
+      { label: 'Distribution', value: 'Reusable Python Package' },
     ],
     links: [
       { label: 'View EY Experience', url: '#experience', type: 'paper' },
@@ -224,7 +223,7 @@ export const ALL_PROJECTS: ProjectData[] = [
     metrics: [
       { label: 'Orchestration', value: 'Apache Airflow DAGs' },
       { label: 'Explainability', value: 'LangGraph RAG Copilot' },
-      { label: 'Lineage', value: 'DVC & MLflow' },
+      { label: 'Lineage', value: 'Version Controlled' },
       { label: 'Backend', value: 'FastAPI Microservice' },
     ],
     links: [
@@ -295,18 +294,18 @@ export const EXPERIENCES: ExperienceRecord[] = [
     headline:
       'Enterprise forensic AI, biometric verification pipelines, and automated MLOps for large-scale public sector clients (SSC, HSSC, NHA).',
     achievements: [
-      'Developed and deployed production face verification, image quality analysis, and morphing detection pipelines (FaceNet512, RetinaFace, PSNR, SSIM, LBP) for government clients (SSC, HSSC, NHA).',
-      'Designed a weighted ensemble inference framework optimized through A/B Testing, LCB/UCB strategies, and ROC-based threshold tuning, reducing false positives by nearly 11%.',
-      'Built high-performance biometric vector search (VectorDB, HNSW ANN) across 1M+ 512D embeddings and a text similarity system (Jaro-Winkler, TF-IDF), improving duplicate identity detection by ~25%.',
-      'Re-architected legacy ML solutions into a modular FastAPI microservices framework with Apache Airflow orchestration and MLflow tracking; optimized inference via multiprocessing and dtype downcasting, reducing latency by ~35% and memory by 22%.',
+      'Developed and deployed production face verification, image quality assessment, and identity fraud detection pipelines for national government clients.',
+      'Designed an ensemble model evaluation framework with calibrated threshold tuning, reducing false positive detections by nearly 11%.',
+      'Built high-performance similarity search across 1M+ candidate records and text matching systems, improving duplicate identity detection by ~25%.',
+      'Modernized legacy ML systems into modular backend services with automated workflows; optimized model inference to reduce latency by ~35% and memory usage by 22%.',
     ],
     technologies: [
       'Python',
       'FastAPI',
       'Apache Airflow',
       'MLflow',
-      'FaceNet512',
-      'RetinaFace',
+      'Deep Learning',
+      'Computer Vision',
       'OpenCV',
       'VectorDB',
       'Docker',
@@ -314,10 +313,10 @@ export const EXPERIENCES: ExperienceRecord[] = [
       'Pandas',
     ],
     metrics: [
-      { label: 'Vector Index', value: 'HNSW VectorDB' },
-      { label: 'Orchestration', value: 'Apache Airflow' },
+      { label: 'Search Scale', value: '1M+ Profiles' },
+      { label: 'Orchestration', value: 'Automated Pipelines' },
       { label: 'Serving Latency', value: '~35% Reduction' },
-      { label: 'Inference', value: 'FastAPI & Docker' },
+      { label: 'Deployment', value: 'Containerized Services' },
     ],
   },
   {
@@ -333,7 +332,7 @@ export const EXPERIENCES: ExperienceRecord[] = [
     ],
     technologies: ['Python', 'MLflow', 'DVC', 'Pandas', 'Scikit-Learn'],
     metrics: [
-      { label: 'Pipelines', value: 'DVC & MLflow' },
+      { label: 'Pipelines', value: 'Automated CI/CD' },
       { label: 'Drift Reduction', value: '20%' },
     ],
   },
@@ -394,10 +393,10 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     id: 'data-infra',
     title: 'Data & Infrastructure',
     description: 'High-scale vector search, relational databases, and data processing.',
-    skills: ['VectorDB (Milvus / FAISS)', 'HNSW Graph Search', 'SQL', 'MongoDB', 'AWS', 'Pandas', 'NumPy'],
+    skills: ['Vector Databases (Milvus / FAISS)', 'Similarity Search', 'SQL', 'MongoDB', 'AWS', 'Pandas', 'NumPy'],
     highlights: [
-      { name: 'Vector Indexing', evidence: 'Inspector Library at EY' },
-      { name: 'Text Search Forensics', evidence: 'Impersonation Detection' },
+      { name: 'Similarity Indexing', evidence: 'Inspector Library at EY' },
+      { name: 'Identity Matching', evidence: 'Duplicate Detection' },
       { name: 'Data Processing', evidence: 'Large-Scale Exam Audits' },
     ],
   },
@@ -408,22 +407,22 @@ export const ENGINEERING_PRINCIPLES: PrincipleRecord[] = [
     index: '01',
     title: 'First-Principles Problem Solving',
     statement:
-      'Machine learning algorithms are grounded in statistics, linear algebra, and optimization manifolds. Understanding theoretical foundations is the only way to diagnose edge cases and build reliable production models.',
+      'Machine learning algorithms are grounded in statistics, linear algebra, and mathematical optimization. Understanding theoretical foundations is the only way to diagnose edge cases and build reliable production models.',
     evidence: 'M.Sc. Data Science & IEEE Peer-Reviewed Publication',
   },
   {
     index: '02',
     title: 'Reproducible MLOps Pipelines',
     statement:
-      'Code, data splits, and model weights must be version-controlled and reproducible. Using DVC data hashes and MLflow tracking guarantees full lineage from raw data to deployed artifacts.',
-    evidence: 'DVC + MLflow Lineage in BurnoutAI & EY Systems',
+      'Code, data splits, and model weights must be version-controlled and reproducible. Using automated data hashes and experiment tracking guarantees full lineage from raw data to deployed artifacts.',
+    evidence: 'Automated Lineage in BurnoutAI & EY Systems',
   },
   {
     index: '03',
     title: 'Production-Ready Engineering',
     statement:
-      'An ML model is only as valuable as its serving reliability. Building asynchronous microservices with FastAPI, multi-stage Docker containers, and strict latency SLAs ensures smooth real-world operation.',
-    evidence: 'P99 < 45ms REST SLAs & Public Docker Containers',
+      'An ML model is only as valuable as its serving reliability. Building modular microservices, containerized deployments, and robust APIs ensures smooth real-world operation.',
+    evidence: 'Low-Latency APIs & Production Containers',
   },
   {
     index: '04',

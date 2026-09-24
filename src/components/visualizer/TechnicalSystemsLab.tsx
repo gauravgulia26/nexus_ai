@@ -51,9 +51,9 @@ export const TechnicalSystemsLab: React.FC = () => {
 
     // Centroids (Clusters)
     const clusters = [
-      { x: width * 0.32, y: height * 0.45, label: 'Cluster Alpha (512D)', color: isDark ? '#3B82F6' : '#1D4ED8' },
-      { x: width * 0.72, y: height * 0.38, label: 'Cluster Beta (512D)', color: isDark ? '#10B981' : '#059669' },
-      { x: width * 0.52, y: height * 0.78, label: 'Anomaly Probe', color: isDark ? '#EF4444' : '#DC2626' },
+      { x: width * 0.32, y: height * 0.45, label: 'Cluster Alpha (Vectors)', color: isDark ? '#3B82F6' : '#1D4ED8' },
+      { x: width * 0.72, y: height * 0.38, label: 'Cluster Beta (Vectors)', color: isDark ? '#10B981' : '#059669' },
+      { x: width * 0.52, y: height * 0.78, label: 'Target Record', color: isDark ? '#EF4444' : '#DC2626' },
     ];
 
     // Draw cluster halos and items
@@ -203,8 +203,8 @@ export const TechnicalSystemsLab: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               <div className="lg:col-span-8 glass-panel rounded-2xl p-5 space-y-3 shadow-lg">
                 <div className="flex items-center justify-between font-mono text-xs text-[var(--text-muted)] border-b border-[var(--border-subtle)] pb-2">
-                  <span>512D METRIC SPACE (CLICK TO RELOCATE PROBE)</span>
-                  <span className="text-[var(--accent-primary)] font-semibold">O(log N) HNSW</span>
+                  <span>VECTOR EMBEDDING SPACE (CLICK TO RELOCATE PROBE)</span>
+                  <span className="text-[var(--accent-primary)] font-semibold">Fast Similarity Search</span>
                 </div>
 
                 <div className="relative border border-[var(--border-subtle)] rounded-xl glass-panel-subtle cursor-crosshair overflow-hidden">
@@ -356,23 +356,23 @@ export const TechnicalSystemsLab: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
                 <div className="p-4 glass-panel-subtle rounded-xl space-y-1.5">
-                  <div className="text-[var(--signal-cyan)] font-bold">01. PSNR / SSIM Check</div>
+                  <div className="text-[var(--signal-cyan)] font-bold">01. Quality Gate</div>
                   <p className="text-xs text-[var(--text-secondary)] font-sans">
-                    Peak Signal-to-Noise Ratio &gt; 28 dB gate rejecting blurred captures prior to deep inference.
+                    Image quality evaluation ensuring sharp, clear captures prior to inference.
                   </p>
                 </div>
 
                 <div className="p-4 glass-panel-subtle rounded-xl space-y-1.5">
-                  <div className="text-[var(--signal-amber)] font-bold">02. Morphing Detection</div>
+                  <div className="text-[var(--signal-amber)] font-bold">02. Integrity Check</div>
                   <p className="text-xs text-[var(--text-secondary)] font-sans">
-                    Local Binary Pattern analysis uncovering interpolation artifacts from synthetic face tampering.
+                    Artifact analysis uncovering interpolation inconsistencies and image tampering.
                   </p>
                 </div>
 
                 <div className="p-4 glass-panel-subtle rounded-xl space-y-1.5">
-                  <div className="text-[var(--signal-emerald)] font-bold">03. 5-Pt Canonical Warp</div>
+                  <div className="text-[var(--signal-emerald)] font-bold">03. Landmark Alignment</div>
                   <p className="text-xs text-[var(--text-secondary)] font-sans">
-                    RetinaFace landmark alignment normalizing face yaw, pitch, and scale to canonical coordinates.
+                    Geometric facial landmark alignment normalizing rotation, pitch, and scale.
                   </p>
                 </div>
               </div>

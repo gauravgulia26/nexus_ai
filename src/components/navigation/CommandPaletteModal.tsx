@@ -77,8 +77,8 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     {
       id: 'inspector-cv',
       category: 'Projects',
-      title: 'Inspector: Biometrics & Vector Search',
-      detail: 'RetinaFace, FaceNet512, HNSW VectorDB & Forensics',
+      title: 'Inspector: Biometrics & Similarity Search',
+      detail: 'Biometric Face Verification & Identity Search',
       icon: Cpu,
       action: () => {
         const el = document.getElementById('project-inspector-library');

@@ -5,11 +5,11 @@ import { Cpu, ShieldCheck, Database, Layers, Terminal } from 'lucide-react';
 import { MotionReveal } from '@/components/common/MotionReveal';
 
 const TELEMETRY_NODES = [
-  { icon: Database, label: 'Vector Search', value: 'HNSW Graph' },
-  { icon: ShieldCheck, label: 'Thresholding', value: 'ROC Calibrated' },
-  { icon: Cpu, label: 'Inference SLA', value: 'P99 < 45ms' },
-  { icon: Layers, label: 'Lineage', value: 'DVC & MLflow' },
-  { icon: Terminal, label: 'Published Tool', value: 'PyPI: logpunch' },
+  { icon: Database, label: 'Similarity Search', value: '1M+ Records' },
+  { icon: ShieldCheck, label: 'Face Verification', value: 'Automated AI' },
+  { icon: Cpu, label: 'API Serving', value: 'Low Latency' },
+  { icon: Layers, label: 'Pipelines', value: 'Automated CI/CD' },
+  { icon: Terminal, label: 'Published Tool', value: 'PyPI Package' },
 ];
 
 export const SystemTelemetryBar: React.FC = () => {

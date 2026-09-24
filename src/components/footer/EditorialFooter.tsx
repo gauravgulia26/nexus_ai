@@ -43,7 +43,7 @@ export const EditorialFooter: React.FC = () => {
           </div>
           <div>
             <div className="text-[var(--text-primary)] font-medium pb-1">HIGHLIGHTS</div>
-            <div>Sub-second HNSW vector retrieval, P99 &lt; 45ms FastAPI serving, versioned DVC pipelines.</div>
+            <div>Fast similarity search across large databases, low-latency APIs, and automated pipelines.</div>
           </div>
           <div>
             <div className="text-[var(--text-primary)] font-medium pb-1">PUBLICATIONS</div>

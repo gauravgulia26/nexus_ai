@@ -11,7 +11,6 @@ export const PERSONAL_INFO = {
   title: 'Machine Learning Engineer',
   roles: ['Machine Learning Engineer', 'MLOps Infrastructure Specialist', 'Generative AI & Agentic Systems Engineer'],
   email: 'gaurxv.gulia@gmail.com',
-  phone: '+91 9588313823',
   location: 'Haryana, India (131001)',
   region: 'Delhi-NCR, India',
   github: 'https://github.com/gauravgulia26',
@@ -26,10 +25,10 @@ export const PERSONAL_INFO = {
   summary:
     'Machine Learning Engineer with production experience at Ernst & Young (EY), specializing in end-to-end MLOps pipelines, high-dimensional vector search, and multi-agent GenAI systems. Grounded in a rigorous mathematical and statistical foundation (M.Sc. Data Science), focusing on low-latency inference, deterministic reproducibility, and production-grade software architecture.',
   metrics: [
-    { label: 'EXPERIENCE', value: 'EY (Ernst & Young)', desc: 'Sr. Analyst in Forensic AI & Biometrics' },
-    { label: 'VECTOR_SEARCH', value: 'HNSW Indexing', desc: 'Sub-Second Search over 1M+ 512D Vectors' },
-    { label: 'SERVING_LATENCY', value: 'P99 < 45ms', desc: 'FastAPI Serving & Docker Container' },
-    { label: 'REPRODUCIBILITY', value: 'DVC & MLflow', desc: '100% Artifact & Data Lineage' },
+    { label: 'EXPERIENCE', value: 'EY (Ernst & Young)', desc: 'Sr. Analyst in Applied AI & Machine Learning' },
+    { label: 'SEARCH_SCALE', value: '1M+ Records', desc: 'Fast Similarity Search over Identity Databases' },
+    { label: 'SERVING_SPEED', value: 'Low Latency', desc: 'FastAPI Backend & Containerized Services' },
+    { label: 'REPRODUCIBILITY', value: 'Version Controlled', desc: 'Reliable Pipeline & Model Tracking' },
   ],
 };
 
@@ -43,18 +42,18 @@ export const EXPERIENCES: ExperienceItem[] = [
     summary:
       'Engineered production forensic AI systems, biometric verification pipelines, and automated MLOps infrastructure for public sector clients (SSC, HSSC, NHA).',
     responsibilities: [
-      'Developed and deployed production-grade face verification, image quality analysis, and morphing detection pipelines for government clients (SSC, HSSC, NHA) using FaceNet512, RetinaFace, PSNR, SSIM, and LBP.',
-      'Designed a weighted ensemble inference framework optimized through A/B Testing, LCB/UCB strategies, and ROC-based threshold tuning, reducing false positives by nearly 11%.',
-      'Built an in-house biometric vector search system across 1M+ 512D embeddings and a text similarity engine (Jaro-Winkler, TF-IDF), improving duplicate identity detection by ~25%.',
-      'Re-architected legacy ML solutions into modular FastAPI microservices with Apache Airflow orchestration and MLflow tracking; optimized inference via multiprocessing and dtype downcasting, reducing latency by ~35% and memory by 22%.',
+      'Developed and deployed production-grade face verification, image quality analysis, and integrity detection systems for government clients (SSC, HSSC, NHA) using deep learning vision models.',
+      'Designed a weighted ensemble inference framework optimized through statistical calibration and threshold tuning, reducing false positives by nearly 11%.',
+      'Built an in-house biometric similarity search system across 1M+ candidate records and a text similarity engine, improving duplicate identity detection by ~25%.',
+      'Re-architected legacy ML solutions into modular FastAPI microservices with Apache Airflow orchestration; optimized model inference via multiprocessing, reducing latency by ~35% and memory by 22%.',
     ],
     technologies: [
       'Python',
       'FastAPI',
       'Apache Airflow',
       'MLflow',
-      'FaceNet512',
-      'RetinaFace',
+      'Deep Learning',
+      'Computer Vision',
       'OpenCV',
       'VectorDB',
       'Docker',
@@ -62,7 +61,7 @@ export const EXPERIENCES: ExperienceItem[] = [
       'Pandas',
     ],
     metrics: [
-      { label: 'Search Index', value: 'HNSW VectorDB' },
+      { label: 'Search Scale', value: '1M+ Profiles' },
       { label: 'Orchestration', value: 'Apache Airflow' },
       { label: 'Optimization', value: 'Multiprocessing' },
       { label: 'Serving', value: 'FastAPI & Docker' },
@@ -81,7 +80,7 @@ export const EXPERIENCES: ExperienceItem[] = [
       'Standardized dataset versioning and experiment tracking across internal ML projects to establish reproducible data splits and prevent train-serving skew.',
     ],
     technologies: ['Python', 'MLflow', 'DVC', 'Pandas', 'Scikit-Learn'],
-    metrics: [{ label: 'Pipeline', value: 'DVC & MLflow' }, { label: 'Drift Reduction', value: '20%' }],
+    metrics: [{ label: 'Pipeline', value: 'Automated CI/CD' }, { label: 'Drift Reduction', value: '20%' }],
   },
 ];
 
@@ -159,7 +158,7 @@ export const PROJECTS: ProjectItem[] = [
     metrics: [
       { label: 'Deployment', value: 'Docker Container' },
       { label: 'Tracking', value: 'DVC + MLflow' },
-      { label: 'Latency', value: 'P99 < 45ms' },
+      { label: 'Latency', value: '< 50ms' },
     ],
   },
   {
@@ -197,22 +196,22 @@ export const PROJECTS: ProjectItem[] = [
     subtitle: 'High-Performance Biometric Search & Text Impersonation Forensics',
     category: 'cv',
     period: 'Jul 2025 – Aug 2025',
-    problem: 'Enterprise forensic audits at EY required sub-second similarity matching across large-scale facial embeddings and massive text datasets.',
-    approach: 'Created a modular Python package (.whl) incorporating VectorDB with HNSW indexing, deep biometric models (FaceNet512, RetinaFace), and parallel text matching.',
-    architecture: 'Modular library built with Dependency Injection and Factory Pattern, leveraging VectorDB (Milvus/FAISS) with HNSW-based ANN indexing.',
+    problem: 'Enterprise forensic audits at EY required fast similarity matching across large-scale face records and text datasets.',
+    approach: 'Created a modular Python package (.whl) incorporating vector search, deep vision models, and parallel text matching.',
+    architecture: 'Modular library built with Dependency Injection and Factory Pattern, leveraging vector database indexing for sub-second retrieval.',
     contributions: [
       'Designed an in-house modular Python package (.whl) and Dockerized forensic analytics library at EY for scalable image and text-based ML workflows.',
-      'Engineered a high-performance face retrieval system using VectorDB and HNSW indexing, enabling sub-second search across 1M+ 512D embeddings.',
+      'Engineered a high-performance face retrieval system using vector search, enabling sub-second matching across 1M+ profile records.',
       'Built a scalable text forensic engine using Jaro-Winkler similarity and TF-IDF to detect impersonation across examination datasets.',
     ],
-    technologies: ['VectorDB (Milvus/FAISS)', 'HNSW ANN Indexing', 'FaceNet512', 'RetinaFace', 'OpenCV', 'Python Packaging (.whl)', 'Docker', 'Multiprocessing'],
+    technologies: ['Vector Databases', 'Similarity Search', 'Deep Learning', 'Computer Vision', 'OpenCV', 'Python Packaging (.whl)', 'Docker', 'Multiprocessing'],
     outcomes: [
-      'Sub-second query response over 1M+ vector embeddings',
+      'Sub-second query response over 1M+ candidate records',
       'Standardized enterprise forensic package distribution',
     ],
     status: 'DEPLOYED // EY INTERNAL .WHL',
     metrics: [
-      { label: 'Search Index', value: 'HNSW ANN' },
+      { label: 'Search Scale', value: '1M+ Records' },
       { label: 'Distribution', value: 'Modular .whl' },
     ],
   },
@@ -297,7 +296,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     description: 'Vector indexing, relational & document storage, and numerical processing',
     skills: [
       { name: 'VectorDB (Milvus / FAISS)', level: 90, highlight: true },
-      { name: 'HNSW Graph Search', level: 88, highlight: true },
+      { name: 'Similarity Search', level: 88, highlight: true },
       { name: 'SQL', level: 86 },
       { name: 'MongoDB', level: 82 },
       { name: 'Pandas', level: 96, highlight: true },

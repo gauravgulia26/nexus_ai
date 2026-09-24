@@ -34,7 +34,7 @@ export const ArchitecturalHero: React.FC = () => {
               <span>{PERSONAL_DATA.location}</span>
             </div>
             <div className="flex items-center space-x-3">
-              <span>MLOPS &bull; VECTOR SEARCH &bull; GENAI SYSTEMS</span>
+              <span>MACHINE LEARNING &bull; APPLIED AI &bull; DATA SYSTEMS</span>
             </div>
           </div>
         </MotionReveal>
@@ -65,7 +65,7 @@ export const ArchitecturalHero: React.FC = () => {
 
             {/* Core Focus Badges with Restrained Luxury Styling */}
             <div className="flex flex-wrap gap-2 pt-1 font-mono text-xs">
-              {['Production MLOps', 'Biometric Vector Search', 'GenAI & LangGraph', 'Low-Latency Inference'].map(
+              {['Machine Learning', 'Similarity Search', 'Generative AI', 'Model Serving'].map(
                 (spec, i) => (
                   <span
                     key={i}
@@ -156,31 +156,31 @@ export const ArchitecturalHero: React.FC = () => {
             <div className="space-y-2.5 font-mono text-xs">
               <div className="p-3 embossed-inset rounded-xl space-y-1">
                 <div className="flex justify-between text-[var(--text-primary)] font-semibold">
-                  <span>EY (Ernst &amp; Young)</span>
-                  <span className="text-[var(--accent-primary)] font-bold">Sr. Analyst</span>
+                  <span>Enterprise AI</span>
+                  <span className="text-[var(--accent-primary)] font-bold">EY (Ernst &amp; Young)</span>
                 </div>
                 <div className="text-[11px] text-[var(--text-secondary)] font-sans">
-                  Built production face verification and forensic ML pipelines for government clients (SSC, HSSC, NHA).
+                  Built production face verification and forensic AI systems for national government clients.
                 </div>
               </div>
 
               <div className="p-3 embossed-inset rounded-xl space-y-1">
                 <div className="flex justify-between text-[var(--text-primary)] font-semibold">
-                  <span>Vector Search at Scale</span>
-                  <span className="text-[var(--signal-emerald)] font-bold">1M+ 512D Vectors</span>
+                  <span>Similarity Matching</span>
+                  <span className="text-[var(--signal-emerald)] font-bold">1M+ Records</span>
                 </div>
                 <div className="text-[11px] text-[var(--text-secondary)] font-sans">
-                  Sub-second similarity search using HNSW approximate nearest neighbor indexing in VectorDB.
+                  Fast similarity search across high-volume databases to identify duplicate identities.
                 </div>
               </div>
 
               <div className="p-3 embossed-inset rounded-xl space-y-1">
                 <div className="flex justify-between text-[var(--text-primary)] font-semibold">
-                  <span>MLOps &amp; Serving</span>
-                  <span className="text-[var(--signal-amber)] font-bold">P99 &lt; 45ms</span>
+                  <span>Production Pipelines</span>
+                  <span className="text-[var(--signal-amber)] font-bold">Fast APIs</span>
                 </div>
                 <div className="text-[11px] text-[var(--text-secondary)] font-sans">
-                  FastAPI microservices, multiprocessing batch workers, Airflow orchestration, and DVC data versioning.
+                  High-performance backend services, automated workflows, and version-controlled data pipelines.
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ export const ArchitecturalHero: React.FC = () => {
             <div className="pt-2 border-t border-[var(--border-subtle)] font-mono text-[10px] text-[var(--text-muted)] flex items-center justify-between">
               <span className="flex items-center space-x-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[var(--signal-emerald)]" />
-                <span>Reproducible &bull; DVC &amp; MLflow</span>
+                <span>Reliable &bull; Production Ready</span>
               </span>
               <span className="text-[var(--text-primary)] font-semibold">Delhi-NCR, India</span>
             </div>
