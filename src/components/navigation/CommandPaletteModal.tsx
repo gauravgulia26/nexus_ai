@@ -182,7 +182,7 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
       id: 'download-resume',
       category: 'Actions',
       title: 'Download Resume (PDF)',
-      detail: 'Gourav_AiML_Resume.pdf',
+      detail: 'webpage_resume.pdf',
       icon: FileText,
       action: () => {
         window.open(PERSONAL_DATA.resumeUrl, '_blank');

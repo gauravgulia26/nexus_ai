@@ -91,7 +91,7 @@ export const PERSONAL_DATA = {
   phone: '+91 9588313823',
   github: 'https://github.com/gauravgulia26',
   linkedin: 'https://www.linkedin.com/in/gauravgulia1205/',
-  resumeUrl: '/Gourav_AiML_Resume.pdf',
+  resumeUrl: '/webpage_resume.pdf',
   systemStatus: 'Available for ML / AI Roles',
   coreMetrics: [
     { label: 'EXPERIENCE', value: 'EY (Ernst & Young)', detail: 'Sr. Analyst in Enterprise Forensic AI & Biometrics' },
