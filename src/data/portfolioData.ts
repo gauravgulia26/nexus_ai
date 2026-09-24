@@ -90,7 +90,7 @@ export const PERSONAL_DATA = {
   email: 'gaurxv.gulia@gmail.com',
   phone: '+91 9588313823',
   github: 'https://github.com/gauravgulia26',
-  linkedin: 'https://linkedin.com/in/gauravgulia26',
+  linkedin: 'https://www.linkedin.com/in/gauravgulia1205/',
   resumeUrl: '/Gourav_AiML_Resume.pdf',
   systemStatus: 'Available for ML / AI Roles',
   coreMetrics: [

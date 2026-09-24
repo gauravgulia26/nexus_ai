@@ -120,7 +120,7 @@ export const ArchitecturalContact: React.FC = () => {
                 <div>
                   <div className="text-[10px] text-[var(--text-muted)] uppercase">LINKEDIN</div>
                   <div className="font-bold text-xs text-[var(--text-primary)] truncate pt-0.5">
-                    gauravgulia26
+                    gauravgulia1205
                   </div>
                 </div>
                 <div className="pt-2">

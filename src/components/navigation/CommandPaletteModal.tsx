@@ -202,7 +202,7 @@ const CommandPaletteInner: React.FC<{ onClose: () => void }> = ({ onClose }) => 
       id: 'linkedin',
       category: 'External',
       title: 'LinkedIn Profile',
-      detail: 'linkedin.com/in/gauravgulia26',
+      detail: 'linkedin.com/in/gauravgulia1205',
       icon: ExternalLink,
       action: () => {
         window.open(PERSONAL_DATA.linkedin, '_blank');
